@@ -11,52 +11,57 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.text_field :date %>
-  </div>
+  <div class="panel-body">
+      <div class="form-group">
+        <div class="col-lg-6">
+          <%= form.label :date %>
+          <%= form.text_field :date , class: 'form-control', required: true %>
+        </div>
+        <div class="col-lg-6">
+          <%= form.label :organ %>
+          <%= form.text_field :organ, class: 'form-control', required: true %><br>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :organ %>
-    <%= form.text_field :organ %>
-  </div>
+      <div class="form-group">
+        <div class="col-lg-6">
+          <%= form.label :modality %>
+          <%= form.text_field :modality, class: 'form-control', required: true  %>
+        </div>
+        <div class="col-lg-6">
+          <%= form.label :object %>
+          <%= form.text_field :object, class: 'form-control', required: true  %>
+        </div>
 
-  <div class="field">
-    <%= form.label :modality %>
-    <%= form.text_field :modality %>
-  </div>
+        <div class="form-group">
+        <div class="col-lg-6">
+          <%= form.label :value %>
+          <%= form.text_field :value, class: 'form-control', required: true  %>
+        </div>
+        <div class="col-lg-6">
+          <%= form.label :inspection %>
+          <%= form.text_field :inspection, class: 'form-control', required: true  %>
+        </div>
 
-  <div class="field">
-    <%= form.label :object %>
-    <%= form.text_field :object %>
-  </div>
+        <div class="form-group">
+        <div class="col-lg-6">
+          <%= form.label :budge %>
+          <%= form.text_field :budge, class: 'form-control', required: true %>
+        </div>
+        <div class="col-lg-6">
+          <%= form.label :status %>
+          <%= form.text_field :status, class: 'form-control', required: true %><br>
+        </div>
 
-  <div class="field">
-    <%= form.label :value %>
-    <%= form.text_field :value %>
-  </div>
+        <div class="form-group">
+        <div class="col-lg-6">
+          <%= form.label :remark %>
+          <%= form.text_area :remark, class: 'form-control', required: true  %>
+        </div>
 
-  <div class="field">
-    <%= form.label :inspection %>
-    <%= form.text_field :inspection %>
-  </div>
-
-  <div class="field">
-    <%= form.label :budge %>
-    <%= form.text_field :budge %>
-  </div>
-
-  <div class="field">
-    <%= form.label :remark %>
-    <%= form.text_area :remark %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
+  
 
   <div class="actions">
-    <%= form.submit %>
+    <button type="button" class="btn btn-default"><%= form.submit %></button>
   </div>
-<% end %>
+  <% end %>
