@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @bidding.date %>
+</p>
+
+<p>
+  <strong>Organ:</strong>
+  <%= @bidding.organ %>
+</p>
+
+<p>
+  <strong>Modality:</strong>
+  <%= @bidding.modality %>
+</p>
+
+<p>
+  <strong>Object:</strong>
+  <%= @bidding.object %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @bidding.value %>
+</p>
+
+<p>
+  <strong>Inspection:</strong>
+  <%= @bidding.inspection %>
+</p>
+
+<p>
+  <strong>Budge:</strong>
+  <%= @bidding.budge %>
+</p>
+
+<p>
+  <strong>Remark:</strong>
+  <%= @bidding.remark %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @bidding.status %>
+</p>
+
+<%= link_to 'Edit', edit_bidding_path(@bidding) %> |
+<%= link_to 'Back', biddings_path %>

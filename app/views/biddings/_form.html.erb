@@ -1,0 +1,62 @@
+<%= form_with(model: bidding, local: true) do |form| %>
+  <% if bidding.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bidding.errors.count, "error") %> prohibited this bidding from being saved:</h2>
+
+      <ul>
+      <% bidding.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.text_field :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :organ %>
+    <%= form.text_field :organ %>
+  </div>
+
+  <div class="field">
+    <%= form.label :modality %>
+    <%= form.text_field :modality %>
+  </div>
+
+  <div class="field">
+    <%= form.label :object %>
+    <%= form.text_field :object %>
+  </div>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.text_field :value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :inspection %>
+    <%= form.text_field :inspection %>
+  </div>
+
+  <div class="field">
+    <%= form.label :budge %>
+    <%= form.text_field :budge %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remark %>
+    <%= form.text_area :remark %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

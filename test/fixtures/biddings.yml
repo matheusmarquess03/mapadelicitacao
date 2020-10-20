@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: MyString
+  organ: MyString
+  modality: MyString
+  object: MyString
+  value: 1.5
+  inspection: MyString
+  budge: MyString
+  remark: MyText
+  status: MyString
+
+two:
+  date: MyString
+  organ: MyString
+  modality: MyString
+  object: MyString
+  value: 1.5
+  inspection: MyString
+  budge: MyString
+  remark: MyText
+  status: MyString
