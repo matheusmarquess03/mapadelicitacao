@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_10_20_112939) do
 
   create_table "biddings", force: :cascade do |t|
-    t.string "date"
+    t.date "date"
     t.string "organ"
     t.string "modality"
     t.string "object"

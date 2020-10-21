@@ -1,7 +1,7 @@
 class CreateBiddings < ActiveRecord::Migration[5.2]
   def change
     create_table :biddings do |t|
-      t.string :date
+      t.date :date
       t.string :organ
       t.string :modality
       t.string :object

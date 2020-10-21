@@ -4,9 +4,8 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4>Licitações
-        <a class="btn btn-outline btn-success pull-right" style="margin-top: -5px" href="http://localhost:3000/biddings/new">
-          <i class="fa fa-plus-square fa-fw"></i> Cadastrar
-</a>      </h4>
+        <%= link_to "Cadastrar", new_bidding_path,  class: "btn btn-outline btn-success pull-right", style: "margin-top: -5px" %>
+      </h4>
     </div>
     <br/>
 
@@ -15,7 +14,7 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              	  <th><%= Bidding.human_attribute_name("date") %></th>
+          <th><%= Bidding.human_attribute_name("date") %></th>
 				  <th><%= Bidding.human_attribute_name("organ") %></th>
 				  <th><%= Bidding.human_attribute_name("modality") %></th>
 				  <th><%= Bidding.human_attribute_name("object") %></th>
@@ -31,7 +30,7 @@
           <tbody>
           	<% @biddings.each do |bidding| %>
               <tr>
-                    <td><%= bidding.date %></td>
+          <td><%= l bidding.date %></td>
 					<td><%= bidding.organ %></td>
 					<td><%= bidding.modality %></td>
 					<td><%= bidding.object %></td>
@@ -40,11 +39,13 @@
 					<td><%= bidding.budge %></td>
 					<td><%= bidding.remark %></td>
 					<td><%= bidding.status %></td>
-					<td><a class="btn btn-outline btn-warning" href="http://localhost:3000/biddings/1/edit">
-                      <i class="fa fa-edit"></i></a>
+					<td><%= link_to edit_bidding_path(bidding), class: "btn btn-outline btn-warning" do %>
+                      <i class="fa fa-edit"></i><% end %>
                     </td>
-					<td><a class="btn btn-outline btn-danger" data-confirm="Tem certeza que deseja fazer isto?" rel="nofollow" data-method="delete" href="http://localhost:3000/biddings/1">
-                        <i class="fa fa-times"></i></a> 
+
+					<td><%= link_to bidding_path(bidding), class: 'btn btn-outline btn-danger', method: :delete, data: { confirm: 'Ao confirmar esta operação será perdido definitivamente os dados desta licitação. Tem certeza que deseja fazer isto?' } do %>
+                        <i class="fa fa-times"></i>
+                    <% end %>
                     </td>
               <% end %>
           </tbody>
