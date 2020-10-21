@@ -6,7 +6,8 @@ class BiddingsController < ApplicationController
   # GET /biddings
   # GET /biddings.json
   def index
-    @biddings = Bidding.all
+    #@biddings = Bidding.all
+	@biddings = Bidding.order(date: :asc)
   end
 
   # GET /biddings/1
