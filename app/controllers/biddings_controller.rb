@@ -1,6 +1,8 @@
 class BiddingsController < ApplicationController
   before_action :set_bidding, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :verify_authenticity_token 
+  protect_from_forgery with: :null_session
+  
   # GET /biddings
   # GET /biddings.json
   def index
