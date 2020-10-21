@@ -1,0 +1,16 @@
+"pt-BR":
+  activerecord:
+    models:
+      bidding: Licitações
+    attributes:
+      bidding:
+        date: "Data"
+        organ: "Órgão"
+        modality: "Modalidade"
+        object: "Objeto"
+        value: "Valor"
+        inspection: "Vistoria"
+        budge: "Orçamento"
+        remark: "Observação"
+        status: "Status"
+      # will translate User attribute "login" as "Handle"
