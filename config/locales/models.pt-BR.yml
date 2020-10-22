@@ -13,4 +13,28 @@
         budge: "Orçamento"
         remark: "Observação"
         status: "Status"
+        
+"pt-BR":
+  activerecord:
+    models:
+      certificate: Certificações
+    attributes:
+      certificate:
+        number: "Número"
+        value: "Valor"
+        object: "Objeto"
+        responsible enginner: "Engenheiro Responsavel"
+        work site: "Local da Obra"
+        year: "Ano"
+        deadline: "Prazo"
+        start date: "Data de Inicio"
+        end date: "Data de Término"
+        book: "Livro"
+        item: "Item"
+        description: "Descrição"
+        unit: "Unidade"
+        quantity: "Quantidade"
+        kind of service: "Tipo de Serviço"
+        path file: "Path do Arquivo"
+        company name: "Nome da Empresa"
       # will translate User attribute "login" as "Handle"

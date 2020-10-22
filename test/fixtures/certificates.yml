@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 
+  value: 1.5
+  object: MyText
+  responsible_enginner: MyString
+  work_site: MyString
+  year: 
+  deadline: MyString
+  start_date: 2020-10-22 14:38:57
+  end_date: 2020-10-22 14:38:57
+  book: 
+  item: MyString
+  description: MyText
+  unit: MyString
+  quantity: 1.5
+  kind_of_service: MyString
+  path_file: MyString
+  company_name: MyString
+
+two:
+  number: 
+  value: 1.5
+  object: MyText
+  responsible_enginner: MyString
+  work_site: MyString
+  year: 
+  deadline: MyString
+  start_date: 2020-10-22 14:38:57
+  end_date: 2020-10-22 14:38:57
+  book: 
+  item: MyString
+  description: MyText
+  unit: MyString
+  quantity: 1.5
+  kind_of_service: MyString
+  path_file: MyString
+  company_name: MyString

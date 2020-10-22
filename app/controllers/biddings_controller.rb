@@ -6,7 +6,7 @@ class BiddingsController < ApplicationController
   # GET /biddings
   # GET /biddings.json
   def index
-    @biddings = Bidding.all
+    @biddings = Bidding.all.page(params[:page]).per(15)
   end
 
   # GET /biddings/1
@@ -31,7 +31,7 @@ class BiddingsController < ApplicationController
     respond_to do |format|
       if @bidding.save
         format.html { redirect_to @bidding, notice: 'Bidding was successfully created.' }
-        format.json { render :show, status: :created, location: @bidding }
+        format.json { render :new, status: :created, location: @bidding }
       else
         format.html { render :new }
         format.json { render json: @bidding.errors, status: :unprocessable_entity }

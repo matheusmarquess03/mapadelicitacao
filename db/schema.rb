@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_112939) do
+ActiveRecord::Schema.define(version: 2020_10_22_143857) do
 
   create_table "biddings", force: :cascade do |t|
     t.date "date"
@@ -22,6 +22,28 @@ ActiveRecord::Schema.define(version: 2020_10_20_112939) do
     t.string "budge"
     t.text "remark"
     t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "certificates", force: :cascade do |t|
+    t.integer "number"
+    t.float "value"
+    t.text "object"
+    t.string "responsible_enginner"
+    t.string "work_site"
+    t.integer "year"
+    t.string "deadline"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "book"
+    t.string "item"
+    t.text "description"
+    t.string "unit"
+    t.float "quantity"
+    t.string "kind_of_service"
+    t.string "path_file"
+    t.string "company_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
