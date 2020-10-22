@@ -30,7 +30,7 @@ class BiddingsController < ApplicationController
 
     respond_to do |format|
       if @bidding.save
-        format.html { redirect_to @bidding, notice: 'Bidding was successfully created.' }
+        format.html { redirect_to biddings_path, notice: 'Bidding was successfully created.' }
         format.json { render :new, status: :created, location: @bidding }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class BiddingsController < ApplicationController
   def update
     respond_to do |format|
       if @bidding.update(bidding_params)
-        format.html { redirect_to @bidding, notice: 'Bidding was successfully updated.' }
+        format.html { redirect_to biddings_path, notice: 'Bidding was successfully updated.' }
         format.json { render :show, status: :ok, location: @bidding }
       else
         format.html { render :edit }
