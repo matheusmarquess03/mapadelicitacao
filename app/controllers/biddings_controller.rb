@@ -6,12 +6,7 @@ class BiddingsController < ApplicationController
   # GET /biddings
   # GET /biddings.json
   def index
-<<<<<<< HEAD
-    @biddings = Bidding.all.page(params[:page]).per(15)
-=======
-    #@biddings = Bidding.all
 	@biddings = Bidding.order(date: :asc)
->>>>>>> 1ee68db66d743c0dc51fab50855117dd631fba44
   end
 
   # GET /biddings/1
