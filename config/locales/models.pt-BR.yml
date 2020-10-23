@@ -30,6 +30,6 @@
         unit: "Unidade"
         quantity: "Quantidade"
         kind_of_service: "Tipo de Serviço"
-        path file: "Path do Arquivo"
-        company name: "Nome da Empresa"
+        path_file: "Diretório do Arquivo"
+        company_name: "Nome da Empresa"
       # will translate User attribute "login" as "Handle"
