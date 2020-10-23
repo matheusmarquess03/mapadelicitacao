@@ -1,7 +1,7 @@
 <%= form_with(model: certificate, local: true) do |form| %>
   <% if certificate.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(certificate.errors.count, "error") %> prohibited this certificate from being saved:</h2>
+      <h2><%= pluralize(bidding.errors.count, "error") %> prohibited this bidding from being saved:</h2>
 
       <ul>
       <% certificate.errors.full_messages.each do |message| %>
@@ -11,92 +11,124 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :number %>
-    <%= form.text_field :number %>
-  </div>
+<form class="form" id="new_janitor" action="/backoffice/janitors" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="AeqlqjkpS+joWi0YeU5MT1ycLsa6Hi8p9297HgsxCxQRkJRSXBm3ahF9FOai632ziGy1k1fMZPWmKd+ojhs+Iw==" />
+  <br/>
 
-  <div class="field">
-    <%= form.label :value %>
-    <%= form.text_field :value %>
-  </div>
+<div class="col-lg-12">
+  <div class="panel panel-default">
 
-  <div class="field">
-    <%= form.label :object %>
-    <%= form.text_area :object %>
-  </div>
+    <div class="panel-heading">
+      <h1>Certificações</h1>
+    </div>
+    <br/>
 
-  <div class="field">
-    <%= form.label :responsible_enginner %>
-    <%= form.text_field :responsible_enginner %>
-  </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <div class="col-lg-6">
+            <%= form.label :number  %>
+            <%= form.text_field :number, class: 'form-control', required: true  %>
+        </div>
+        <div class="col-lg-6">
+          <%= form.label :value %>
+          <%= form.text_field :value, class: 'form-control', required: false %><br>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :work_site %>
-    <%= form.text_field :work_site %>
-  </div>
+      <div class="form-group">
+        <div class="col-lg-12">
+         <%= form.label :object %>
+         <%= form.text_area :object, class: 'form-control', required: false  %>
+         <br />
+        </div>
+        <br />
+        <div class="col-lg-6">
+          <%= form.label :responsible_enginner %>
+          <%= form.text_field :responsible_enginner, class: 'form-control', required: true  %>
+          <br />
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :year %>
-    <%= form.text_field :year %>
-  </div>
+      <div class="form-group">
+        <div class="col-lg-6">
+          <%= form.label :work_site %>
+          <%= form.text_field :work_site, class: 'form-control', required: false  %>
+          <br />
 
-  <div class="field">
-    <%= form.label :deadline %>
-    <%= form.text_field :deadline %>
-  </div>
+        </div>
+        <div class="col-lg-6">
+          <%= form.label :year %>
+          <%= form.text_field :year, class: 'form-control', required: false  %><br>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.datetime_select :start_date %>
-  </div>
+        <div class="form-group">
+        <div class="col-lg-6">
+          <%= form.label :deadline %>
+          <%= form.text_field :deadline, class: 'form-control', required: false %><br>
+        </div>
+        <div class="col-lg-6">
+          <%= form.label :start_date %>
+          <%= date_field_tag 'certificate[start_date]', @certificate.start_date.present? ? @certificate.start_date : nil, class: 'form-control', required: false %>
+        </div>
 
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.datetime_select :end_date %>
-  </div>
+          <div class="row">
+          <div class="col-lg-6">
+            <%= form.label :end_date %>
+            <%= date_field_tag 'certificate[end_date]', @certificate.end_date.present? ? @certificate.end_date : nil, class: 'form-control', required: false %>
+          </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :book %>
-    <%= form.text_field :book %>
-  </div>
+       <div class="form-group">
+        <div class="col-lg-6">
+          <%= form.label :book %>
+          <%= form.text_field :book, class: 'form-control', required: true %><br>
+        </div>
+        <div class="col-lg-6">
+          <%= form.label :item %>
+          <%= form.text_field :item, class: 'form-control', required: true %><br>
+        </div>
 
-  <div class="field">
-    <%= form.label :item %>
-    <%= form.text_field :item %>
-  </div>
+         <div class="form-group">
+        <div class="col-lg-12">
+          <%= form.label :description %>
+          <%= form.text_area :description, class: 'form-control', required: true %><br>
+        </div>
+        <div class="col-lg-6">
+          <%= form.label :unit %>
+          <%= form.text_field :unit, class: 'form-control', required: true %><br>
+        </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+         <div class="form-group">
+        <div class="col-lg-6">
+          <%= form.label :quantity %>
+          <%= form.text_field :quantity, class: 'form-control', required: true %><br>
+        </div>
+        <div class="col-lg-6">
+          <%= form.label :kind_of_service %>
+          <%= form.text_field :kind_of_service, class: 'form-control', required: false %><br>
+        </div>
 
-  <div class="field">
-    <%= form.label :unit %>
-    <%= form.text_field :unit %>
+         <div class="form-group">
+        <div class="col-lg-6">
+          <%= form.label :path_file %>
+          <%= form.text_field :path_file, class: 'form-control', required: false %><br>
+        </div>
+        <div class="col-lg-6">
+          <%= form.label :company_name %>
+          <%= form.text_field :company_name, class: 'form-control', required: true %><br>
+        </div>    
+     </div>
+    </div>
   </div>
+</div>
+  
+      
+  <br />
+  
+  <a class="btn btn-secondary btn-lg" <%= link_to "Voltar", certificates_path %>
+  <button name="button" type="submit" class="btn btn-success btn-lg">Salvar</button>
 
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.text_field :quantity %>
-  </div>
+</div>
+<% end %> 
+</form>
 
-  <div class="field">
-    <%= form.label :kind_of_service %>
-    <%= form.text_field :kind_of_service %>
-  </div>
-
-  <div class="field">
-    <%= form.label :path_file %>
-    <%= form.text_field :path_file %>
-  </div>
-
-  <div class="field">
-    <%= form.label :company_name %>
-    <%= form.text_field :company_name %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

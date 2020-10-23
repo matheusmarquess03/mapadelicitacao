@@ -1,5 +1,5 @@
 <div class="col-lg-12">
-  <h1 class="page-header">Listagem Certificações</h1>
+  <h1 class="page-header"><b>Listagem Certificações</b></h1>
 
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -29,21 +29,12 @@
             <% @certificates.each do |certificate| %>
               <tr>
         <td><%= certificate.number %></td>
-        <td><%= certificate.value %></td>
-        <td><%= certificate.object %></td>
         <td><%= certificate.responsible_enginner %></td>
-        <td><%= certificate.work_site %></td>
-        <td><%= certificate.year %></td>
-        <td><%= certificate.deadline %></td>
-        <td><%= l certificate.start_date %></td>
-        <td><%= l certificate.end_date %></td>
-        <td><%= certificate.book %></td>
-        <td><%= certificate.item %></td>
         <td><%= certificate.description %></td>
         <td><%= certificate.unit %></td>
         <td><%= certificate.quantity %></td>
-        <td><%= certificate.kind_of_service %></td>
-        <td><%= certificate.path_file %></td>
+        <td><%= certificate.book %></td>
+        <td><%= certificate.item %></td>
         <td><%= certificate.company_name %></td>
           <td><%= link_to edit_certificate_path(certificate), class: "btn btn-outline btn-warning" do %>
                       <i class="fa fa-edit"></i><% end %>
