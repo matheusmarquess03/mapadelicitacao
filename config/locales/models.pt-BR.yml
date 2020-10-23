@@ -2,7 +2,7 @@ pt-BR:
   activerecord:
     models:
       bidding: Licitações
-      certificate: Certificações
+      certificate: Atestados
     attributes:
       bidding:
         date: Data
@@ -14,7 +14,7 @@ pt-BR:
         budge: Orçamento
         remark: Observação
         status: Status
-      certificate:
+    certificate:
         number: Número
         value: Valor
         object: Objeto
@@ -32,4 +32,3 @@ pt-BR:
         kind_of_service: Tipo de Serviço
         path_file: Diretório do Arquivo
         company_name: Nome da Empresa
-      # will translate User attribute login as Handle
