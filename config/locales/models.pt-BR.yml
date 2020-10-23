@@ -1,34 +1,38 @@
 pt-BR:
-  activerecord:
-    models:
-      bidding: Licitações
-      certificate: Atestados
-    attributes:
-      bidding:
-        date: Data
-        organ: Órgão
-        modality: Modalidade
-        object: Objeto
-        value: Valor
-        inspection: Vistoria
-        budge: Orçamento
-        remark: Observação
-        status: Status
-    certificate:
-        number: Número
-        value: Valor
-        object: Objeto
-        year: Ano
-        deadline: Prazo
-        book: Livro
-        item: Item
-        description: Descrição
-        unit: Unidade
-        quantity: Quantidade
-        start_date: Data de Inicio
-        end_date: Data de Término
-        responsible_enginner: Engenheiro Responsavel
-        work_site: Local da Obra
-        kind_of_service: Tipo de Serviço
-        path_file: Diretório do Arquivo
-        company_name: Nome da Empresa
+    activerecord:
+        models:
+            bidding: 
+                one: Licitação
+                other: Licitações
+            certificate: 
+                one: Atestado
+                other: Atestados
+       attributes:
+            bidding:
+                date: Data
+                organ: Órgão
+                modality: Modalidade
+                object: Objeto
+                value: Valor
+                inspection: Vistoria
+                budge: Orçamento
+                remark: Observação
+                status: Status
+            certificate:
+                number: Número
+                value: Valor
+                object: Objeto
+                year: Ano
+                deadline: Prazo
+                book: Livro
+                item: Item
+                description: Descrição
+                unit: Unidade
+                quantity: Quantidade
+                start_date: Data de Inicio
+                end_date: Data de Término
+                responsible_enginner: Engenheiro Responsavel
+                work_site: Local da Obra
+                kind_of_service: Tipo de Serviço
+                path_file: Diretório do Arquivo
+                company_name: Nome da Empresa
