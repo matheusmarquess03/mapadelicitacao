@@ -8,8 +8,8 @@ class CreateCertificates < ActiveRecord::Migration[5.2]
       t.string :work_site
       t.integer :year
       t.string :deadline
-      t.datetime :start_date
-      t.datetime :end_date
+      t.date  :start_date
+      t.date :end_date
       t.integer :book
       t.string :item
       t.text :description
