@@ -2,6 +2,7 @@
   activerecord:
     models:
       bidding: Licitações
+      certificate: Certificações
     attributes:
       bidding:
         date: "Data"
@@ -13,12 +14,6 @@
         budge: "Orçamento"
         remark: "Observação"
         status: "Status"
-        
-"pt-BR":
-  activerecord:
-    models:
-      certificate: Certificações
-    attributes:
       certificate:
         number: "Número"
         value: "Valor"
@@ -27,14 +22,13 @@
         work site: "Local da Obra"
         year: "Ano"
         deadline: "Prazo"
-        start date: "Data de Inicio"
-        end date: "Data de Término"
+        start_date: "Data de Inicio"
+        end_date: "Data de Término"
         book: "Livro"
         item: "Item"
         description: "Descrição"
         unit: "Unidade"
         quantity: "Quantidade"
-        kind of service: "Tipo de Serviço"
-        path file: "Path do Arquivo"
-        company name: "Nome da Empresa"
-      # will translate User attribute "login" as "Handle"
+        kind_of_service: "Tipo de Serviço"
+        path_file: "Path do Arquivo"
+        company_name: "Nome da Empresa"
