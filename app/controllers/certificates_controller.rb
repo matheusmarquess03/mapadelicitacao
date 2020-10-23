@@ -5,7 +5,7 @@ class CertificatesController < ApplicationController
   # GET /certificates
   # GET /certificates.json
   def index
-    @certificates = Certificate.all
+    @certificates = Certificate.limit(100)
   end
 
   # GET /certificates/1
