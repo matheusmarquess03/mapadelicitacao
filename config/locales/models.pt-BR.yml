@@ -1,12 +1,8 @@
 pt-BR:
   activerecord:
     models:
-      bidding: 
-        one: Licitação
-        other: Licitações
-      certificate: 
-        one: Atestado
-        other: Atestados
+      bidding:Licitação
+      certificate:Atestado
     attributes:
       bidding:
         date: Data
