@@ -18,7 +18,7 @@
 				  <th><%= Bidding.human_attribute_name("organ") %></th>
 				  <th><%= Bidding.human_attribute_name("modality") %></th>
 				  <th><%= Bidding.human_attribute_name("object") %></th>
-				  <td><%= number_with_precision(bidding.value, :precision => 2) %></td>
+				  <td><%= Bidding.human_attribute_name("value") %></td>
 				  <th><%= Bidding.human_attribute_name("inspection") %></th>
 				  <th><%= Bidding.human_attribute_name("budge") %></th>
 				  <th><%= Bidding.human_attribute_name("remark") %></th>
@@ -30,11 +30,11 @@
           <tbody>
           	<% @biddings.each do |bidding| %>
               <tr>
-          <td><%= l bidding.date %></td>
+					<td><%= l bidding.date %></td>
 					<td><%= bidding.organ %></td>
 					<td><%= bidding.modality %></td>
 					<td><%= bidding.object %></td>
-					<td><%= bidding.value %></td>
+					<td><%= number_with_precision(bidding.value, :precision => 2) %></td>
 					<td><%= bidding.inspection %></td>
 					<td><%= bidding.budge %></td>
 					<td><%= bidding.remark %></td>

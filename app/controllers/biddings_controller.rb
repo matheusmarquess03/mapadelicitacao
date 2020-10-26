@@ -1,5 +1,7 @@
 class BiddingsController < ApplicationController
   before_action :set_bidding, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_cancel, only: [:reports]
+  
   skip_before_action :verify_authenticity_token 
   protect_from_forgery with: :null_session
   
@@ -58,8 +60,19 @@ class BiddingsController < ApplicationController
   def destroy
     @bidding.destroy
     respond_to do |format|
-      format.html { redirect_to biddings_url, notice: 'Bidding was successfully destroyed.' }
+      format.html { redirect_to biddings_path, notice: 'Bidding was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+  
+  def reports
+	@q = Bidding.ransack(params[:q])
+
+	@biddings = @q.result
+					.order(date: :asc)
+
+	respond_to do |format|
+		format.html
     end
   end
 
@@ -71,6 +84,14 @@ class BiddingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bidding_params
-      params.require(:bidding).permit(:date, :organ, :modality, :object, :value, :inspection, :budge, :remark, :status)
+      pp = params.require(:bidding).permit(:date, :organ, :modality, :object, :value, :inspection, :budge, :remark, :status)
+	  pp[:status] = params[:bidding][:status].to_i
+	  
+	  return pp
     end
+	
+	def redirect_cancel
+		redirect_to biddings_path if params[:cancel]
+	end
+	
 end

@@ -1,0 +1,10 @@
+'pt-BR':
+  enums:
+    biddings:
+      status:
+        registered: 'Cadastrada'
+        ongoing: 'Em Andamento'
+        closed_without_participation: 'Encerrada s/ participação'
+        closed_with_participation: 'Encerrada c/ participação'
+        postponed: 'Adiada'
+        won: 'Vencida'

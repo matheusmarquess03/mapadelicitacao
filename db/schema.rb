@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_10_22_143857) do
     t.string "inspection"
     t.string "budge"
     t.text "remark"
-    t.string "status"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 2020_10_22_143857) do
     t.string "work_site"
     t.integer "year"
     t.string "deadline"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.date "start_date"
+    t.date "end_date"
     t.integer "book"
     t.string "item"
     t.text "description"

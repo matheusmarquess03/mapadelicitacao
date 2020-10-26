@@ -9,7 +9,7 @@ class CreateBiddings < ActiveRecord::Migration[5.2]
       t.string :inspection
       t.string :budge
       t.text :remark
-      t.string :status
+      t.integer :status
 
       t.timestamps
     end

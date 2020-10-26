@@ -1,91 +1,92 @@
 <%= form_with(model: bidding, local: true) do |form| %>
-  <% if bidding.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(bidding.errors.count, "error") %> prohibited this bidding from being saved:</h2>
+	<% if bidding.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(bidding.errors.count, "error") %> prohibited this bidding from being saved:</h2>
 
-      <ul>
-      <% bidding.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+			<ul>
+				<% bidding.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
 
-<form class="form" id="new_janitor" action="/backoffice/janitors" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="AeqlqjkpS+joWi0YeU5MT1ycLsa6Hi8p9297HgsxCxQRkJRSXBm3ahF9FOai632ziGy1k1fMZPWmKd+ojhs+Iw==" />
-  <br/>
+	<div class="col-lg-12">
+		<div class="panel panel-default">
 
-<div class="col-lg-12">
-  <div class="panel panel-default">
+			<div class="panel-heading">
+				<h1>Cadastrar Licitações</h1>
+			</div>
+		
+			<br/>
 
-    <div class="panel-heading">
-      <h1>Cadastrar Licitações</h1>
-    </div>
-    <br/>
+		<div class="panel-body">
+			<div class="form-group">
+				<div class="col-lg-6">
+					<%= form.label :date %>
+					<%= date_field_tag 'bidding[date]', @bidding.date.present? ? @bidding.date : nil, class: 'form-control', required: true %>
+				</div>
+				<div class="col-lg-6">
+					<%= form.label :organ %>
+					<%= form.text_field :organ, class: 'form-control', required: true %><br>
+				</div>
+			</div>
 
-    <div class="panel-body">
-      <div class="form-group">
-        <div class="col-lg-6">
-          <%= form.label :date %>
-          <%= date_field_tag 'bidding[date]', @bidding.date.present? ? @bidding.date : nil, class: 'form-control', required: true %>
-        </div>
-        <div class="col-lg-6">
-          <%= form.label :organ %>
-          <%= form.text_field :organ, class: 'form-control', required: true %><br>
-        </div>
-      </div>
+			<div class="form-group">
+				<div class="col-lg-6">
+					<%= form.label :modality %>
+					<%= form.text_field :modality, class: 'form-control', required: true  %>
+				</div>
+				<div class="col-lg-6">
+					<%= form.label :object %>
+					<%= form.text_field :object, class: 'form-control', required: true  %>
+					<br />
+				</div>
+			</div>
 
-      <div class="form-group">
-        <div class="col-lg-6">
-          <%= form.label :modality %>
-          <%= form.text_field :modality, class: 'form-control', required: true  %>
-        </div>
-        <div class="col-lg-6">
-          <%= form.label :object %>
-          <%= form.text_field :object, class: 'form-control', required: true  %>
-          <br />
-        </div>
-      </div>
+			<div class="form-group">
+				<div class="col-lg-6">
+					<%= form.label :value %>
+					<%=  number_field_tag 'bidding[value]', @bidding.value.present? ? @bidding.value : nil, class: 'form-control', step:0.01, required: true  %>
 
-      <div class="form-group">
-        <div class="col-lg-6">
-          <%= form.label :value %>
-          <%=  number_field_tag 'bidding[value]', @bidding.value.present? ? @bidding.value : nil, class: 'form-control', step:0.01, required: true  %>
+				</div>
+				<div class="col-lg-6">
+					<%= form.label :inspection %>
+					<%= form.text_field :inspection, class: 'form-control', required: true  %><br>
+				</div>
+			</div>
 
-        </div>
-        <div class="col-lg-6">
-          <%= form.label :inspection %>
-          <%= form.text_field :inspection, class: 'form-control', required: true  %><br>
-        </div>
-      </div>
+			<div class="form-group">
+				<div class="col-lg-6">
+					<%= form.label :budge %>
+					<%= form.text_field :budge, class: 'form-control', required: true %><br>
+				</div>
+				<div class="col-lg-6">
+					<%= form.label :status %>
+					<%= form.select :status,
+						options_for_select(biddings_statuses_i18n, selected: Bidding.statuses[form.object.status]),
+						{ include_blank: 'Selecione o status' },
+						{ class: 'form-control', required: true }
+					%>
+			 
+				</div>
 
-        <div class="form-group">
-        <div class="col-lg-6">
-          <%= form.label :budge %>
-          <%= form.text_field :budge, class: 'form-control', required: true %><br>
-        </div>
-        <div class="col-lg-6">
-          <%= form.label :status %>
-          <%= form.text_field :status, class: 'form-control', required: true %><br>
-        </div>
-
-          <div class="row">
-          <div class="col-lg-6">
-            <%= form.label :remark %>
-            <%= form.text_area :remark, class: 'form-control', required: true  %>
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
+				<div class="row">
+					<div class="col-lg-6">
+						<%= form.label :remark %>
+						<%= form.text_area :remark, class: 'form-control', required: true  %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
   
       
-  <br />
+	<br />
   
-  <a class="btn btn-secondary btn-lg" <%= link_to "Voltar", biddings_path %>
-  <button name="button" type="submit" class="btn btn-success btn-lg">Salvar</button>
-
+	<%= link_to 'Voltar', biddings_path, class: 'btn btn-secondary btn-lg' %>
+	<%= button_tag 'Salvar', class: 'btn btn-success btn-lg' %>
 </div>
-<% end %> 
-</form>
+<% end %>
 
 
