@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :certificates
   resources :biddings
   get 'home/index'
-  root 'home#index'
+  root 'biddings#reports'
   
   
 end

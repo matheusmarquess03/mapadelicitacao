@@ -1,15 +1,33 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>PrizmaTech</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+			   <%= link_to "Licitações", biddings_path, class:"navbar-brand" %>
+			   <%= link_to "Atestados", certificates_path, class:"navbar-brand" %>
+            </div>
+            <!-- /.navbar-header -->
+		</nav>
+
+        <%= yield %>
+	
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+</body>
+
 </html>
