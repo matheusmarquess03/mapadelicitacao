@@ -67,7 +67,7 @@ class CertificatesController < ApplicationController
     @q = Certificate.ransack(params[:q])
 
     @certificates = @q.result
-            .order(date: :asc)
+            .order(description: :asc)
 
     respond_to do |format|
       format.html
