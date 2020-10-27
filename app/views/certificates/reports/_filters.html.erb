@@ -1,0 +1,32 @@
+<%= search_form_for @q, url: certificates_path do |f| %>
+	<div class="row">
+		<div class="col-lg-2">
+			<strong>Engenheiro: </strong>
+
+			 <%= select_tag 'q[certificate_id_eq]',
+              options_from_collection_for_select(@certificate_list, 'id', 'responsible_enginner', selected: params[:q].present? ? params[:q][:certificate_id_eq] : nil),
+              include_blank: 'Selecione uma opção', class: "form-control"
+	  %>
+		</div>
+
+		<div class="col-lg-2">
+			<strong>Empresa: </strong>
+
+			<%= select_tag 'q[certificate_id_eq]',
+              options_from_collection_for_select(@certificate_list, 'id', 'company_name', selected: params[:q].present? ? params[:q][:certificate_id_eq] : nil),
+              include_blank: 'Selecione uma opção', class: "form-control"
+	  %>
+			
+		</div>
+		<div class="col-lg-2">
+			<strong>Descrição: </strong>
+			<%= f.text_field :description_cont, { class: 'form-control' } %>
+		</div>
+		<div class="col-sm-12 col-lg-3">
+			<br>
+			<%= f.submit 'Aplicar Filtro', class: 'btn btn-info' %>
+			<%= button_tag 'Limpar', type: 'submit', name: 'cancel', value: true, class: 'btn btn-default' %>
+		</div>
+	</div>
+<% end %>
+		

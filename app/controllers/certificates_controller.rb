@@ -1,4 +1,5 @@
 class CertificatesController < ApplicationController
+  before_action :set_certificate_list, only: %i[reports]
   before_action :set_certificate, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token 
   protect_from_forgery with: :null_session
@@ -62,10 +63,25 @@ class CertificatesController < ApplicationController
     end
   end
 
+    def reports
+    @q = Certificate.ransack(params[:q])
+
+    @certificates = @q.result
+            .order(date: :asc)
+
+    respond_to do |format|
+      format.html
+      end
+    end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_certificate
+     def set_certificate
       @certificate = Certificate.find(params[:id])
+
+    end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_certificate_list
+      @certificate_list = Certificate.all.order(name: :asc)
     end
 
     # Only allow a list of trusted parameters through.
