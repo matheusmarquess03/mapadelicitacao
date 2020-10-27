@@ -81,7 +81,7 @@ class CertificatesController < ApplicationController
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_certificate_list
-      @certificate_list = Certificate.all.order(name: :asc)
+      @certificate_list = Certificate.all.order(description: :asc)
     end
 
     # Only allow a list of trusted parameters through.
