@@ -83,8 +83,15 @@
   
       
 	<br />
-  
-	<%= link_to 'Voltar', biddings_path, class: 'btn btn-secondary btn-lg' %>
+    
+	<%= hidden_field_tag 'startPage', @startPage  %>
+	
+	<% if @startPage == "prop" %>
+		<%= link_to 'Voltar', prospection_path, class: 'btn btn-secondary btn-lg' %>
+	<% else %>
+		<%= link_to 'Voltar', biddings_path, class: 'btn btn-secondary btn-lg' %>
+	<% end %>
+	
 	<%= button_tag 'Salvar', class: 'btn btn-success btn-lg' %>
 </div>
 <% end %>

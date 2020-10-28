@@ -32,7 +32,8 @@
 							<td><%= bidding.budge %></td>
 							<td><%= bidding.remark %></td>
 							<td><%= t("enums.biddings.status.#{bidding.status}") if bidding.status.present? %></td>
-							<td><%= link_to edit_bidding_path(bidding), class: "btn btn-outline btn-warning" do %>
+							
+							<td><%= link_to edit_bidding_path(bidding, :startPage => "bidd"), class: "btn btn-outline btn-warning" do %>
 								<i class="fa fa-edit"></i><% end %>
 							</td>
 							

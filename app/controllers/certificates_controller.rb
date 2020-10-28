@@ -69,6 +69,7 @@ class CertificatesController < ApplicationController
 
     @certificates = @q.result
             .order(description: :asc)
+			.paginate(page: params[:page], per_page: 10)
 
     respond_to do |format|
       format.html
@@ -93,6 +94,6 @@ class CertificatesController < ApplicationController
     end
 
     def redirect_cancel
-    redirect_to certifica_path if params[:cancel]
+    redirect_to certificates_path if params[:cancel]
   end
 end

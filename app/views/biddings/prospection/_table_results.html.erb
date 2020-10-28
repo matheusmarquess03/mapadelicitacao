@@ -23,7 +23,7 @@
 				<tbody>
 					<% @biddings.each do |bidding| %>
 						<tr>
-							<td><%= l bidding.created_at %></td>
+							<td><%= bidding.created_at.strftime("%d/%m/%Y") %></td>
 							<td><%= l bidding.date %></td>
 							<td><%= bidding.organ %></td>
 							<td><%= bidding.modality %></td>
@@ -32,12 +32,16 @@
 							<td><%= bidding.inspection %></td>
 							<td><%= bidding.budge %></td>
 							<td><%= bidding.remark %></td>
-							<td><%= link_to edit_bidding_path(bidding), class: "btn btn-outline btn-warning" do %>
+							<td><%= link_to edit_bidding_path(bidding, :startPage => "prop"), class: "btn btn-outline btn-warning" do %>
 								<i class="fa fa-edit"></i><% end %>
 							</td>
 							
-							<td><%= link_to bidding_path(bidding), class: 'btn btn-outline btn-danger', method: :delete, data: { confirm: 'Ao confirmar esta operação será perdido definitivamente os dados desta licitação. Tem certeza que deseja fazer isto?' } do %>
+							<td><%= link_to bidding_path(bidding, :startPage => "prop"), class: 'btn btn-outline btn-danger', method: :delete, data: { confirm: 'Ao confirmar esta operação será perdido definitivamente os dados desta licitação. Tem certeza que deseja fazer isto?' } do %>
 								<i class="fa fa-times"></i><% end %>
+							</td>
+							
+							<td><%= link_to check_bidding_path(bidding, :startPage => "prop"), class: 'btn btn-outline btn-success' do %>
+								<i class="fa fa-check"></i><% end %>
 							</td>
 						</tr>
 					<% end %>
