@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Prospecção
+	<%= link_to "Cadastrar", new_bidding_path,  class: "btn btn-outline btn-success pull-right", style: "margin-top: -5px" %>
+	</h4>
+  </div>
+  <br/>
+
+  <div class="panel-body">
+    <div class="form-group">
+
+      <div class="filters">
+        <%= render partial: 'biddings/prospection/filters' %>
+        <hr>
+      </div>
+
+      <div class="table">
+        <%= render partial: 'biddings/prospection/table_results' %>
+      </div>
+
+    </div>
+  </div>
+</div>
