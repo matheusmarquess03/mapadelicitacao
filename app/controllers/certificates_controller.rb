@@ -1,6 +1,7 @@
 class CertificatesController < ApplicationController
   before_action :set_certificate_list, only: %i[reports]
   before_action :set_certificate, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_cancel, only: [:reports]
   skip_before_action :verify_authenticity_token 
   protect_from_forgery with: :null_session
   # GET /certificates
@@ -81,6 +82,7 @@ class CertificatesController < ApplicationController
     
 	# Use callbacks to share common setup or constraints between actions.
     def set_certificate_list
+    @responsible_enginner_list = Certificate.select(:responsible_enginner).distinct
 		@company_list = Certificate.select(:company_name).distinct
 		@certificate_list = Certificate.all.order(description: :asc)
     end
@@ -89,4 +91,8 @@ class CertificatesController < ApplicationController
     def certificate_params
       params.require(:certificate).permit(:number, :value, :object, :responsible_enginner, :work_site, :year, :deadline, :start_date, :end_date, :book, :item, :description, :unit, :quantity, :kind_of_service, :path_file, :company_name)
     end
+
+    def redirect_cancel
+    redirect_to certifica_path if params[:cancel]
+  end
 end

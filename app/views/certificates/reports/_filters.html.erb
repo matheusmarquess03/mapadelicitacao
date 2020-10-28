@@ -3,8 +3,8 @@
 		<div class="col-lg-2">
 			<strong>Engenheiro: </strong>
 
-			 <%= select_tag 'q[certificate_id_eq]',
-              options_from_collection_for_select(@certificate_list, 'id', 'responsible_enginner', selected: params[:q].present? ? params[:q][:certificate_id_eq] : nil),
+			 <%= select_tag 'q[responsible_enginner_cont]',
+              options_from_collection_for_select(@responsible_enginner_list, 'responsible_enginner', 'responsible_enginner', selected: params[:q].present? ? params[:q][:responsible_enginner_cont] : nil),
               include_blank: 'Selecione uma opção', class: "form-control"
 	  %>
 		</div>
