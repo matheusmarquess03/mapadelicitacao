@@ -75,13 +75,14 @@ class CertificatesController < ApplicationController
     end
 
   private
-     def set_certificate
-      @certificate = Certificate.find(params[:id])
-
-    end
-    # Use callbacks to share common setup or constraints between actions.
+	def set_certificate
+		@certificate = Certificate.find(params[:id])
+	end
+    
+	# Use callbacks to share common setup or constraints between actions.
     def set_certificate_list
-      @certificate_list = Certificate.all.order(description: :asc)
+		@company_list = Certificate.select(:company_name).distinct
+		@certificate_list = Certificate.all.order(description: :asc)
     end
 
     # Only allow a list of trusted parameters through.

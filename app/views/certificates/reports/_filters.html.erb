@@ -12,8 +12,8 @@
 		<div class="col-lg-2">
 			<strong>Empresa: </strong>
 
-			<%= select_tag 'q[certificate_id_eq]',
-              options_from_collection_for_select(@certificate_list, 'id', 'company_name', selected: params[:q].present? ? params[:q][:certificate_id_eq] : nil),
+			<%= select_tag 'q[company_name_cont]',
+              options_from_collection_for_select(@company_list, 'company_name', 'company_name', selected: params[:q].present? ? params[:q][:company_name_cont] : nil),
               include_blank: 'Selecione uma opção', class: "form-control"
 	  %>
 			
