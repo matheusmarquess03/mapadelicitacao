@@ -2,7 +2,7 @@
   activerecord:
     models:
       bidding: Licitações
-      certificate: Certificações
+      certificate: Atestados
     attributes:
       bidding:
         date: "Data"
