@@ -1,6 +1,6 @@
 <%= search_form_for @q, url: prospection_path do |f| %>
 	<div class="row">
-		<div class="col-lg-5">
+		<div class="col-lg-4">
 			<strong>Intervalo de datas: </strong>
 			<div class="row">
 				<div class="col-lg-6">
@@ -11,21 +11,31 @@
 					<%= date_field_tag 'q[date_lteq]',  params.dig(:q, :date_lteq), { class: 'form-control' } %>
 				</div>
 			</div>
-		</div>
-		<div class="col-lg-2">
-			<strong>Órgão: </strong>
-			<%= f.text_field :organ_cont, { class: 'form-control' } %>
+			
+			
 		</div>
 		
-
+		<div class="col-lg-2">
+			<strong>Órgão: </strong>		
+			<%= f.text_field :organ_cont, { class: 'form-control' } %>
+		</div>
+			
 		<div class="col-lg-2">
 			<strong>Data de Criação: </strong>
 			<%= date_field_tag 'q[created_at_eq]', params.dig(:q, :created_at_eq), { class: 'form-control' } %>
 		</div>
 		
-		<div class="col-sm-12 col-lg-3">
+		<div class="col-lg-2">
+			<strong>Situação: </strong>
+			<%= f.select :status_eq,
+				options_for_select(biddings_statuses_i18n, selected: params[:q].present? ? params[:q][:status_eq] : nil),
+				{ include_blank: 'Todos' }, { class: 'form-control' }
+			%>
+		</div>
+		
+		<div class="col-sm-12 col-lg-2">
 			<br>
-			<%= f.submit 'Aplicar Filtro', class: 'btn btn-info' %>
+			<%= f.submit 'Filtrar', class: 'btn btn-info' %>
 			<%= button_tag 'Limpar', type: 'submit', name: 'cancel', value: true, class: 'btn btn-default' %>
 		</div>
 	</div>
