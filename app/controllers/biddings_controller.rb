@@ -19,6 +19,7 @@ class BiddingsController < ApplicationController
 
   # GET /biddings/new
   def new
+	@startPage = params[:startPage]
     @bidding = Bidding.new
   end
 
