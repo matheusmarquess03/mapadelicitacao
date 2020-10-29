@@ -9,4 +9,8 @@ class Bidding < ApplicationRecord
 		postponed: 5,
 		won: 6
 	}
+	
+	ransacker :created_at do
+		Arel.sql("date(biddings.created_at)")
+	end
 end
