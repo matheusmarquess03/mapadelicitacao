@@ -5,16 +5,17 @@
       certificate: Atestados
     attributes:
       bidding:
-        date: "Data"
+        date: "Data da Licitação"
         organ: "Órgão"
         modality: "Modalidade"
         object: "Objeto"
         value: "Valor"
         inspection: "Vistoria"
         budge: "Orçamento"
-        remark: "Observação"
+        remark: "Observação" # antigo campo de "observação"
         status: "Status"
         created_at: "Data de Criação"
+        attestation: "Atestados"
       certificate:
         number: "Número"
         value: "Valor"

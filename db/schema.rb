@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_143857) do
+ActiveRecord::Schema.define(version: 2020_11_04_165154) do
 
   create_table "biddings", force: :cascade do |t|
     t.date "date"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2020_10_22_143857) do
     t.string "budge"
     t.text "remark"
     t.integer "status"
+    t.integer "attestation"
+    t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,6 +46,20 @@ ActiveRecord::Schema.define(version: 2020_10_22_143857) do
     t.string "kind_of_service"
     t.string "path_file"
     t.string "company_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.integer "cnpj"
+    t.string "image_file_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "kinf_of_service"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

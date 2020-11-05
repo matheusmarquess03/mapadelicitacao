@@ -7,6 +7,10 @@ ruby '2.6.3'
 gem 'rails', '~> 5.2.1'
 gem 'bootstrap_sb_admin_base_v2'
 gem 'kaminari'
+gem  'bootstrap' 
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'popper_js'
+gem 'flexbox_rb'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

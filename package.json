@@ -1,5 +1,9 @@
 {
   "name": "prizma-tech",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+  	"jquery": "^1.12.4",
+    "datatables.net": "^2.1.1"
+  }
+
 }

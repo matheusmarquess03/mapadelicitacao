@@ -10,6 +10,8 @@ class CreateBiddings < ActiveRecord::Migration[5.2]
       t.string :budge
       t.text :remark
       t.integer :status
+      t.integer :attestation
+      t.string :website
 
       t.timestamps
     end

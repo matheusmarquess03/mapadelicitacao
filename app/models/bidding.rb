@@ -7,8 +7,18 @@ class Bidding < ApplicationRecord
 		closed_without_participation: 3,
 		closed_with_participation: 4,
 		postponed: 5,
-		won: 6
+		won: 6,
+		bidding_map: 7,
+		missing_certificate: 8
 	}
+
+	enum attestation: {
+		profissional: 1,
+		empresa: 2,
+		ambos: 3
+	}
+
+
 	
 	ransacker :created_at do
 		Arel.sql("date(biddings.created_at)")

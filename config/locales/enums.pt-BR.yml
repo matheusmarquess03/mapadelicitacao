@@ -7,4 +7,21 @@
         closed_without_participation: 'Encerrada s/ participação'
         closed_with_participation: 'Encerrada c/ participação'
         postponed: 'Adiada'
-        won: 'Vencida'
+        won: 'Vencedora'
+        bidding_map: 'Mapa de licitação'
+        missing_certificate: 'Falta atestado'    
+      attestation:
+        professional: 'Profissional'
+        company: 'Empresa'
+        both: 'Ambos'
+                   
+
+
+    services:
+      status:
+        Coleta: 'Coleta'
+        Drenagem: 'Drenagem'
+        Drenagem_e_Pavimentação: 'Drenagem e Pavimentação'
+        Obra_de_Revitalização: 'Obra de Revitalização'
+        Outros: 'Outros'
+

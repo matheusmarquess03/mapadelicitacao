@@ -15,7 +15,7 @@
 		<div class="panel panel-default">
 
 			<div class="panel-heading">
-				<h1>Cadastrar Licitações</h1>
+				<h4>Cadastrar Licitações</h4>
 			</div>
 		
 			<br/>
@@ -68,14 +68,28 @@
 						{ include_blank: 'Selecione o status' },
 						{ class: 'form-control', required: true }
 					%>
-			 
+					<br />
 				</div>
 
-				<div class="row">
+				    <div class="col-lg-6">
+					<%= form.label :attestation %>
+					<%= form.select :attestation,
+						options_for_select(biddings_statuses_i18n, selected: Bidding.statuses[form.object.attestation]),
+						{ include_blank: 'Selecione o tipo de atestado' },
+						{ class: 'form-control', required: true }
+					%>
+					<br />
+				</div>
+				<div class="col-lg-6">
+					<%= form.label :website %>
+					<%= form.text_field :website, class: 'form-control', required: true  %><br>
+				</div>
+				<br />
 					<div class="col-lg-6">
 						<%= form.label :remark %>
 						<%= form.text_area :remark, class: 'form-control', required: true  %>
 					</div>
+					
 				</div>
 			</div>
 		</div>

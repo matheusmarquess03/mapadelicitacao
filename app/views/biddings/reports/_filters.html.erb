@@ -18,7 +18,7 @@
 		</div>
 		
 		<div class="col-lg-2">
-			<strong>Situação: </strong>
+			<strong>Status: </strong>
 			<%= f.select :status_eq,
 				options_for_select(biddings_statuses_i18n, selected: params[:q].present? ? params[:q][:status_eq] : nil),
 				{ include_blank: 'Todos' }, { class: 'form-control' }

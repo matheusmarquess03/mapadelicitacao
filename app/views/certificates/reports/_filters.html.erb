@@ -1,6 +1,11 @@
 <%= search_form_for @q, url: certificates_path do |f| %>
 	<div class="row">
 		<div class="col-lg-2">
+			<strong>Número: </strong>
+			<%= f.text_field :number_eq, { class: 'form-control' } %>
+		</div>
+
+		<div class="col-lg-2">
 			<strong>Engenheiro: </strong>
 
 			 <%= select_tag 'q[responsible_enginner_cont]',
