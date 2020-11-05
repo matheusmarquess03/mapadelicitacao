@@ -15,12 +15,12 @@ class BiddingsController < ApplicationController
   # GET /biddings/1
   # GET /biddings/1.json
   def show
-	@list_companies = Company.order(date: :asc)
+	@list_companies = Company.order(name: :asc)
   end
 
   # GET /biddings/new
   def new
-	@list_companies = Company.order(date: :asc)
+	@list_companies = Company.order(name: :asc)
 	@startPage = params[:startPage]
     @bidding = Bidding.new
   end
