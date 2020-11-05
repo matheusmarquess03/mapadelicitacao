@@ -127,7 +127,7 @@ class BiddingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bidding
-		@list_companies = Company.order(date: :asc)
+		@list_companies = Company.order(name: :asc)
 		@startPage = params[:startPage]
 		@bidding = Bidding.find(params[:id])
     end
