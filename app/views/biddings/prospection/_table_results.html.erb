@@ -25,7 +25,13 @@
 							<td><%= bidding.created_at.strftime("%d/%m/%Y") %></td>
 							<td><%= l bidding.date %></td>
 							<td><%= bidding.organ %></td>
-							<td><%= bidding.modality %></td>
+							
+							<% if bidding.website.blank? %>
+								<td><%= bidding.modality %></td>
+							<% else %>
+								<td><a href="<%= bidding.website %>" target="_blank"><b><u><%= bidding.modality %></b></u></a></td>
+							<% end %>
+							
 							<td><%= bidding.object %></td>
 							<td><%= number_with_precision(bidding.value, :precision => 2) %></td>
 							<td><%= bidding.remark %></td>

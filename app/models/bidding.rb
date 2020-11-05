@@ -12,10 +12,10 @@ class Bidding < ApplicationRecord
 		missing_certificate: 8
 	}
 
-	enum attestation: {
-		profissional: 1,
-		empresa: 2,
-		ambos: 3
+	enum type_of_certificate: {
+		professional: 1,
+		company: 2,
+		both: 3
 	}
 
 

@@ -15,10 +15,12 @@ class BiddingsController < ApplicationController
   # GET /biddings/1
   # GET /biddings/1.json
   def show
+	@list_companies = Company.order(date: :asc)
   end
 
   # GET /biddings/new
   def new
+	@list_companies = Company.order(date: :asc)
 	@startPage = params[:startPage]
     @bidding = Bidding.new
   end
@@ -125,14 +127,18 @@ class BiddingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bidding
-	  @startPage = params[:startPage]
-      @bidding = Bidding.find(params[:id])
+		@list_companies = Company.order(date: :asc)
+		@startPage = params[:startPage]
+		@bidding = Bidding.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def bidding_params
-      pp = params.require(:bidding).permit(:date, :organ, :modality, :object, :value, :inspection, :budge, :remark, :status)
+      pp = params.require(:bidding).permit(:date, :organ, :modality, :object, :value, :inspection, :budge, :remark, :status, :website, :type_of_certificate, :company_id)
 	  pp[:status] = params[:bidding][:status].to_i
+	  pp[:type_of_certificate] = params[:bidding][:type_of_certificate].to_i
+	  pp[:company_id] = params[:bidding][:company_id].to_i
+	  
 	  
 	  return pp
     end
@@ -144,5 +150,6 @@ class BiddingsController < ApplicationController
 	def redirect_prop_cancel
 		redirect_to prospection_path if params[:cancel]
 	end
+	
 	
 end

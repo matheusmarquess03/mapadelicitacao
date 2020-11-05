@@ -15,7 +15,8 @@
         remark: "Observação" # antigo campo de "observação"
         status: "Status"
         created_at: "Data de Criação"
-        attestation: "Atestados"
+        type_of_certificate: "Tipo de Certificado"
+        
       certificate:
         number: "Número"
         value: "Valor"

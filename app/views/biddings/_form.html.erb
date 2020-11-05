@@ -73,13 +73,35 @@
 
 				<div class="col-lg-6">
 					<%= form.label :website %>
-					<%= form.text_field :website, class: 'form-control', required: true  %><br>
+					<%= form.text_field :website, class: 'form-control' %><br>
 				</div>
 				<br />
-					<div class="col-lg-6">
-						<%= form.label :remark %>
-						<%= form.text_area :remark, class: 'form-control', required: true  %>
-					</div>
+				
+				<div class="col-lg-6">
+					<%= form.label :type_of_certificate %>
+					<%= form.select :type_of_certificate,
+						options_for_select(biddings_type_of_certificates_i18n, selected: Bidding.type_of_certificates[form.object.type_of_certificate]),
+						{ include_blank: 'Selecione o tipo de serviço' },
+						{ class: 'form-control', required: true }
+					%>
+					<br />
+				</div>
+				
+				<div class="col-lg-6">
+					<%= form.label :remark %>
+					<%= form.text_area :remark, class: 'form-control', required: true  %>
+				</div>
+				
+				<div class="col-lg-2">
+					<strong>Empresa: </strong>
+
+					 <%= select_tag "bidding[company_id]",
+					  options_from_collection_for_select(@list_companies, 'id', 'name', selected: @bidding.company_id),
+					  include_blank: 'Selecione uma empresa', class: "form-control"
+					%>
+					
+					
+				</div>
 					
 				</div>
 			</div>
