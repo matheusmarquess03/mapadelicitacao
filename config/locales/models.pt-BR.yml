@@ -16,6 +16,7 @@
         status: "Status"
         created_at: "Data de Criação"
         type_of_certificate: "Tipo de Certificado"
+        kind_of_service: "Tipo de Serviço"
         
       certificate:
         number: "Número"

@@ -15,6 +15,7 @@
 						<th><%= sort_link(@q, :value, Bidding.human_attribute_name("value")) %></th>
 						<th><%= sort_link(@q, :remark, Bidding.human_attribute_name("remark")) %></th>
 						<th><%= sort_link(@q, :status, Bidding.human_attribute_name("status")) %></th>
+						<th><%= sort_link(@q, :company_name, Bidding.human_attribute_name("kind_of_service")) %></th>
 						<th colspan="2"></th>
 					</tr>
 				</thead>
@@ -35,12 +36,8 @@
 							<td><%= bidding.object %></td>
 							<td><%= number_with_precision(bidding.value, :precision => 2) %></td>
 							<td><%= bidding.remark %></td>
-							
-							
-
-
 							<td><%= t("enums.biddings.status.#{bidding.status}") if bidding.status.present? %></td>
-							
+							<td><%= bidding.kind_of_service_id %></td>
 							<td><%= link_to edit_bidding_path(bidding, :startPage => "prop"), class: "btn btn-outline btn-warning" do %>
 								<i class="fa fa-edit"></i><% end %>
 							</td>

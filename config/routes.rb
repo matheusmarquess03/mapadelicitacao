@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :kind_of_services
   resources :services
   resources :companies
 	get 'prospection', to: 'biddings#prospection'

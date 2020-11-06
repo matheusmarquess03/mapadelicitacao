@@ -16,11 +16,13 @@ class BiddingsController < ApplicationController
   # GET /biddings/1.json
   def show
 	@list_companies = Company.order(name: :asc)
+  @list_kind_of_services = KindOfService.order(name: :asc)
   end
 
   # GET /biddings/new
   def new
 	@list_companies = Company.order(name: :asc)
+  @list_kind_of_services = KindOfService.order(name: :asc)
 	@startPage = params[:startPage]
     @bidding = Bidding.new
   end
@@ -101,6 +103,9 @@ class BiddingsController < ApplicationController
 
   
   def reports
+    @list_kind_of_services = 10 #KindOfService.all.order(name: :asc)
+    @q = Certificate.ransack(params[:q])
+
     resultB = Bidding.where("status != ?", 1)
 	
 	@q = resultB.ransack(params[:q])
@@ -114,6 +119,8 @@ class BiddingsController < ApplicationController
   end
 
   def prospection
+    @list_kind_of_services = KindOfService.all.order(name: :asc)
+
 	@q = Bidding.ransack(params[:q])
 
 	@biddings = @q.result
@@ -128,16 +135,22 @@ class BiddingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_bidding
 		@list_companies = Company.order(name: :asc)
+    @list_kind_of_services = KindOfService.all.order(name: :asc)
 		@startPage = params[:startPage]
 		@bidding = Bidding.find(params[:id])
+    
     end
+
+    # Use callbacks to share common setup or constraints between actions.
+    
 
     # Only allow a list of trusted parameters through.
     def bidding_params
-      pp = params.require(:bidding).permit(:date, :organ, :modality, :object, :value, :inspection, :budge, :remark, :status, :website, :type_of_certificate, :company_id)
+      pp = params.require(:bidding).permit(:date, :organ, :modality, :object, :value, :inspection, :budge, :remark, :status, :website, :type_of_certificate, :company_id, :kind_of_service_id)
 	  pp[:status] = params[:bidding][:status].to_i
 	  pp[:type_of_certificate] = params[:bidding][:type_of_certificate].to_i
 	  pp[:company_id] = params[:bidding][:company_id].to_i
+    pp[:kind_of_service_id] = params[:bidding][:kind_of_service_id].to_i
 	  
 	  
 	  return pp

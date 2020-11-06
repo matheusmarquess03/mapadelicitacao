@@ -1,4 +1,6 @@
 <%= search_form_for @q, url: biddings_path do |f| %>
+	
+
 	<div class="row">
 		<div class="col-lg-5">
 			<strong>Intervalo de datas: </strong>
@@ -26,9 +28,11 @@
 		</div>
 		
 		<div class="col-sm-12 col-lg-3">
-			<br>
-			<%= f.submit 'Aplicar Filtro', class: 'btn btn-info' %>
-			<%= button_tag 'Limpar', type: 'submit', name: 'cancel', value: true, class: 'btn btn-default' %>
+			<br>	
 		</div>
 	</div>
+
+<%= f.submit 'Aplicar Filtro', class: 'btn btn-info' %>
+<%= button_tag 'Limpar', type: 'submit', name: 'cancel', value: true, class: 'btn btn-default' %>
+
 <% end %>

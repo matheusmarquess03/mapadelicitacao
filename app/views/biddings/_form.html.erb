@@ -88,11 +88,6 @@
 				</div>
 				
 				<div class="col-lg-6">
-					<%= form.label :remark %>
-					<%= form.text_area :remark, class: 'form-control', required: true  %>
-				</div>
-				
-				<div class="col-lg-2">
 					<strong>Empresa: </strong>
 
 					 <%= select_tag "bidding[company_id]",
@@ -101,6 +96,24 @@
 					%>
 					
 					
+				</div>
+
+				<div class="col-lg-6">
+					<strong>Tipo de Serviço: </strong>
+
+					 <%= select_tag "bidding[kind_of_service_id]",
+					  options_from_collection_for_select(@list_kind_of_services, 'id', 'name', selected: @bidding.kind_of_service_id),
+					  include_blank: 'Selecione uma empresa', class: "form-control"
+					%>
+					
+						</br>
+				</div>
+
+		
+
+				<div class="col-lg-6">
+					<%= form.label :remark %>
+					<%= form.text_area :remark, class: 'form-control', required: true  %>
 				</div>
 					
 				</div>

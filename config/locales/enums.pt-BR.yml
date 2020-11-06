@@ -14,7 +14,7 @@
                 professional: 'Profissional'
                 company: 'Empresa'
                 both: 'Ambos'
-        services:
+        kind_of_services:
             status:
                 Coleta: 'Coleta'
                 Drenagem: 'Drenagem'
