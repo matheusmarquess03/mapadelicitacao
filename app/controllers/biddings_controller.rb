@@ -66,9 +66,8 @@ class BiddingsController < ApplicationController
     respond_to do |format|
       if @bidding.update(bidding_params)
         format.html { 
+			load_filter_params
 			if(params[:startPage] == "prop")
-				load_filter_params
-				
 				redirect_to prospection_path(q: {:created_at_eq => @created_at_eq, :organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :status_eq => @status_eq}), notice: 'Bidding was successfully updated.' 
 			else 
 				redirect_to biddings_path(q: {:organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :company_id_eq => @company_id_eq, :status_eq => @status_eq}), notice: 'Bidding was successfully updated.' 
