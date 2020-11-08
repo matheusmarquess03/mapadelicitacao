@@ -97,7 +97,7 @@
         <div class="form-group">
             <div class="col-lg-6">
             <h4>Empresa:
-              <%= @bidding.company_id %>
+              <%= @bidding.company.name %>
             </h4>
             <br />   
             </div>  
@@ -106,7 +106,7 @@
       <div class="form-group">
             <div class="col-lg-6">
             <h4>Tipo de Serviço:
-              <%= @bidding.kind_of_service_id %>
+              <%= @bidding.kind_of_service.name %>
             </h4>
             <br />   
             </div>  
@@ -123,10 +123,23 @@
           </div> 
       <br />
 </div>
+
+	<%= hidden_field_tag 'startPage', @startPage  %>
+	
+	<%= hidden_field_tag 'q[organ_cont]', @organ_cont %>
+	<%= hidden_field_tag 'q[date_gteq]', @date_gteq %>
+	<%= hidden_field_tag 'q[date_lteq]', @date_lteq %>
+	<%= hidden_field_tag 'q[kind_of_service_id_eq]', @kind_of_service_id_eq %>
+	<%= hidden_field_tag 'q[status_eq]', @status_eq %>
+	 <%= hidden_field_tag 'q[company_id_eq]', @company_id_eq %>
+	
+	
+
 </div>
+<%= link_to 'Voltar', biddings_path(:startPage => "bidd", q:{:organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :company_id_eq => @company_id_eq, :status_eq => @status_eq}), class: 'btn btn-secondary btn-lg' %>
 </div>
 
-<%= link_to 'Voltar', biddings_path, class: 'btn btn-success btn-lg' %>
+
 
 
 

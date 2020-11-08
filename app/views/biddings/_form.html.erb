@@ -46,78 +46,92 @@
 
 			<div class="form-group">
 				<div class="col-lg-6">
+					<%= form.label :value_abbr %>
+					<%= form.text_field :value_abbr, class: 'form-control', required: true  %>
+				</div>
+				
+				<div class="col-lg-6">
 					<%= form.label :value %>
 					<%=  number_field_tag 'bidding[value]', @bidding.value.present? ? @bidding.value : nil, class: 'form-control', step:0.01, required: true  %>
-
-				</div>
-				<div class="col-lg-6">
-					<%= form.label :inspection %>
-					<%= form.text_field :inspection, class: 'form-control', required: true  %><br>
+					<br>
 				</div>
 			</div>
-
+			
 			<div class="form-group">
-				<div class="col-lg-6">
-					<%= form.label :budge %>
-					<%= form.text_field :budge, class: 'form-control', required: true %><br>
-				</div>
-				<div class="col-lg-6">
-					<%= form.label :status %>
-					<%= form.select :status,
-						options_for_select(biddings_statuses_i18n, selected: Bidding.statuses[form.object.status]),
-						{ include_blank: 'Selecione o status' },
-						{ class: 'form-control', required: true }
-					%>
-					<br />
-				</div>
-
-				<div class="col-lg-6">
-					<%= form.label :website %>
-					<%= form.text_field :website, class: 'form-control' %><br>
-				</div>
-				<br />
-				
-				<div class="col-lg-6">
-					<%= form.label :type_of_certificate %>
-					<%= form.select :type_of_certificate,
-						options_for_select(biddings_type_of_certificates_i18n, selected: Bidding.type_of_certificates[form.object.type_of_certificate]),
-						{ include_blank: 'Selecione o tipo de serviço' },
-						{ class: 'form-control', required: true }
-					%>
-					<br />
-				</div>
-				
-				<div class="col-lg-6">
-					<strong>Empresa: </strong>
-
-					 <%= select_tag "bidding[company_id]",
-					  options_from_collection_for_select(@list_companies, 'id', 'name', selected: @bidding.company_id),
-					  include_blank: 'Selecione uma empresa', class: "form-control"
-					%>
-					
-					
-				</div>
-
 				<div class="col-lg-6">
 					<strong>Tipo de Serviço: </strong>
 
 					 <%= select_tag "bidding[kind_of_service_id]",
 					  options_from_collection_for_select(@list_kind_of_services, 'id', 'name', selected: @bidding.kind_of_service_id),
-					  include_blank: 'Selecione uma empresa', class: "form-control"
+					  include_blank: 'Selecione um tipo de serviço', class: "form-control"
 					%>
-					
-						</br>
+				</div>	
+				
+				<div class="col-lg-6">
+					<%= form.label :website %>
+					<%= form.text_field :website, class: 'form-control' %><br>
 				</div>
-
-		
-
+			</div>
+			
+			<div class="form-group">
+				<div class="col-lg-6">
+					<%= form.label :type_of_certificate %>
+					<%= form.select :type_of_certificate,
+						options_for_select(biddings_type_of_certificates_i18n, selected: Bidding.type_of_certificates[form.object.type_of_certificate]),
+						{ include_blank: 'Selecione o tipo de certificado' },
+						{ class: 'form-control', required: true }
+					%>
+				</div>
+					
 				<div class="col-lg-6">
 					<%= form.label :remark %>
 					<%= form.text_area :remark, class: 'form-control', required: true  %>
-				</div>
-					
+					<br>
 				</div>
 			</div>
+			
+			<% if @startPage == "prop" %>
+				<div style="visibility: hidden">
+			<% else %>
+				<div>
+			<% end %>
+			
+				<div class="form-group">
+					<div class="col-lg-6">
+						<%= form.label :inspection %>
+						<%= form.text_field :inspection, class: 'form-control'  %>
+					</div>
+					
+					<div class="col-lg-6">
+						<%= form.label :budge %>
+						<%= form.text_field :budge, class: 'form-control' %>
+						<br>
+					</div>
+					
+				</div>
+					
+				<div class="form-group">
+					<div class="col-lg-6">
+						<strong>Empresa: </strong>
+
+						 <%= select_tag "bidding[company_id]",
+						  options_from_collection_for_select(@list_companies, 'id', 'name', selected: @bidding.company_id),
+						  include_blank: 'Selecione uma empresa', class: "form-control"
+						%>
+					</div>
+					
+					<div class="col-lg-6">
+						<%= form.label :status %>
+						<%= form.select :status,
+							options_for_select(biddings_statuses_i18n, selected: Bidding.statuses[form.object.status]),
+							{ include_blank: 'Selecione o status' },
+							{ class: 'form-control' }
+						%>
+					</div>
+				</div>
+			</div>
+			
+			
 		</div>
 	</div>
   
@@ -126,10 +140,19 @@
     
 	<%= hidden_field_tag 'startPage', @startPage  %>
 	
+	<%= hidden_field_tag 'q[organ_cont]', @organ_cont %>
+	<%= hidden_field_tag 'q[date_gteq]', @date_gteq %>
+	<%= hidden_field_tag 'q[date_lteq]', @date_lteq %>
+	<%= hidden_field_tag 'q[kind_of_service_id_eq]', @kind_of_service_id_eq %>
+	<%= hidden_field_tag 'q[status_eq]', @status_eq %>
+	
+	
 	<% if @startPage == "prop" %>
-		<%= link_to 'Voltar', prospection_path, class: 'btn btn-secondary btn-lg' %>
+		<%= hidden_field_tag 'q[created_at_eq]', @created_at_eq %>
+		<%= link_to 'Voltar', prospection_path(:startPage => "prop", q:{:created_at_eq => @created_at_eq, :organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :status_eq => @status_eq}), class: 'btn btn-secondary btn-lg' %>
 	<% else %>
-		<%= link_to 'Voltar', biddings_path, class: 'btn btn-secondary btn-lg' %>
+	    <%= hidden_field_tag 'q[company_id_eq]', @company_id_eq %>
+		<%= link_to 'Voltar', biddings_path(:startPage => "bidd", q:{:organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :company_id_eq => @company_id_eq, :status_eq => @status_eq}), class: 'btn btn-secondary btn-lg' %>
 	<% end %>
 	
 	<%= button_tag 'Salvar', class: 'btn btn-success btn-lg' %>

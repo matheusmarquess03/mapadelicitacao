@@ -9,6 +9,7 @@
         organ: "Órgão"
         modality: "Modalidade"
         object: "Objeto"
+        value_abbr: "Valor Abreviado"
         value: "Valor"
         inspection: "Vistoria"
         budge: "Orçamento"
@@ -17,6 +18,7 @@
         created_at: "Data de Criação"
         type_of_certificate: "Tipo de Certificado"
         kind_of_service: "Tipo de Serviço"
+        company: "Empresa"
         
       certificate:
         number: "Número"

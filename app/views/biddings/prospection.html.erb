@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4>Prospecção
-	<%= link_to "Cadastrar", new_bidding_path(:startPage => "prop"),  class: "btn btn-outline btn-success pull-right", style: "margin-top: -5px" %>
+	<%= link_to "Cadastrar", new_bidding_path(:startPage => "prop", q:{:organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :company_id_eq => @company_id_eq, :status_eq => @status_eq}),  class: "btn btn-outline btn-success pull-right", style: "margin-top: -5px" %>
 	</h4>
   </div>
   <br/>

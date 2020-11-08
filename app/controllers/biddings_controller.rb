@@ -15,30 +15,43 @@ class BiddingsController < ApplicationController
   # GET /biddings/1
   # GET /biddings/1.json
   def show
+	load_filter_params
+	
 	@list_companies = Company.order(name: :asc)
-  @list_kind_of_services = KindOfService.order(name: :asc)
+	@list_kind_of_services = KindOfService.order(name: :asc)
   end
 
   # GET /biddings/new
   def new
+    load_filter_params
+	
 	@list_companies = Company.order(name: :asc)
-  @list_kind_of_services = KindOfService.order(name: :asc)
+	@list_kind_of_services = KindOfService.order(name: :asc)
 	@startPage = params[:startPage]
     @bidding = Bidding.new
   end
 
   # GET /biddings/1/edit
   def edit
+	load_filter_params
+	
   end
 
   # POST /biddings
   # POST /biddings.json
   def create
+	params[:bidding][:status] = 1
+	params[:bidding][:company_id] = 1
+	
     @bidding = Bidding.new(bidding_params)
+	
+	@list_kind_of_services = KindOfService.order(name: :asc)
 
     respond_to do |format|
       if @bidding.save
-        format.html { redirect_to prospection_path, notice: 'Bidding was successfully created.' }
+		load_filter_params
+		
+        format.html { redirect_to prospection_path(q: {:created_at_eq => @created_at_eq, :organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :status_eq => @status_eq}), notice: 'Bidding was successfully created.' }
         format.json { render :new, status: :created, location: @bidding }
       else
         format.html { render :new }
@@ -54,9 +67,11 @@ class BiddingsController < ApplicationController
       if @bidding.update(bidding_params)
         format.html { 
 			if(params[:startPage] == "prop")
-				redirect_to prospection_path, notice: 'Bidding was successfully updated.' 
+				load_filter_params
+				
+				redirect_to prospection_path(q: {:created_at_eq => @created_at_eq, :organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :status_eq => @status_eq}), notice: 'Bidding was successfully updated.' 
 			else 
-				redirect_to biddings_path, notice: 'Bidding was successfully updated.' 
+				redirect_to biddings_path(q: {:organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :company_id_eq => @company_id_eq, :status_eq => @status_eq}), notice: 'Bidding was successfully updated.' 
 			end
 		}
         format.json { render :show, status: :ok, location: @bidding }
@@ -85,10 +100,11 @@ class BiddingsController < ApplicationController
   
   def check
     respond_to do |format|
-      if @bidding.update(status: 2)
+      if @bidding.update(status: 7)
         format.html { 
 			if(params[:startPage] == "prop")
-				redirect_to prospection_path, notice: 'Bidding was successfully updated.' 
+				load_filter_params
+				redirect_to prospection_path(q: {:created_at_eq => @created_at_eq, :organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :status_eq => @status_eq}), notice: 'Bidding was successfully updated.' 
 			else 
 				redirect_to biddings_path, notice: 'Bidding was successfully updated.' 
 			end
@@ -103,10 +119,12 @@ class BiddingsController < ApplicationController
 
   
   def reports
-    @list_kind_of_services = 10 #KindOfService.all.order(name: :asc)
-    @q = Certificate.ransack(params[:q])
-
-    resultB = Bidding.where("status != ?", 1)
+	load_filter_params
+	
+	@list_companies = Company.order(name: :asc)
+	@list_kind_of_services = KindOfService.all.order(name: :asc)
+	
+    resultB = Bidding.joins(:company).where("status != ?", 1)
 	
 	@q = resultB.ransack(params[:q])
 
@@ -119,9 +137,11 @@ class BiddingsController < ApplicationController
   end
 
   def prospection
+	load_filter_params
+  
     @list_kind_of_services = KindOfService.all.order(name: :asc)
 
-	@q = Bidding.ransack(params[:q])
+	@q = Bidding.joins(:company).ransack(params[:q])
 
 	@biddings = @q.result
           .order(date: :asc)
@@ -135,10 +155,9 @@ class BiddingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_bidding
 		@list_companies = Company.order(name: :asc)
-    @list_kind_of_services = KindOfService.all.order(name: :asc)
+		@list_kind_of_services = KindOfService.all.order(name: :asc)
 		@startPage = params[:startPage]
 		@bidding = Bidding.find(params[:id])
-    
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -146,12 +165,11 @@ class BiddingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bidding_params
-      pp = params.require(:bidding).permit(:date, :organ, :modality, :object, :value, :inspection, :budge, :remark, :status, :website, :type_of_certificate, :company_id, :kind_of_service_id)
+      pp = params.require(:bidding).permit(:date, :organ, :modality, :object, :value, :value_abbr, :inspection, :budge, :remark, :status, :website, :type_of_certificate, :company_id, :kind_of_service_id)
 	  pp[:status] = params[:bidding][:status].to_i
 	  pp[:type_of_certificate] = params[:bidding][:type_of_certificate].to_i
 	  pp[:company_id] = params[:bidding][:company_id].to_i
-    pp[:kind_of_service_id] = params[:bidding][:kind_of_service_id].to_i
-	  
+      pp[:kind_of_service_id] = params[:bidding][:kind_of_service_id].to_i
 	  
 	  return pp
     end
@@ -162,6 +180,22 @@ class BiddingsController < ApplicationController
 	
 	def redirect_prop_cancel
 		redirect_to prospection_path if params[:cancel]
+	end
+	
+	def load_filter_params
+		if (params[:q].present?)
+			if(params[:startPage] == "prop")
+				@created_at_eq = params[:q][:created_at_eq]
+			else 
+				@company_id_eq = params[:q][:company_id_eq]
+			end
+			
+			@organ_cont = params[:q][:organ_cont]
+			@date_gteq = params[:q][:date_gteq]
+			@date_lteq = params[:q][:date_lteq]
+			@kind_of_service_id_eq = params[:q][:kind_of_service_id_eq]
+			@status_eq = params[:q][:status_eq]
+		end
 	end
 	
 	

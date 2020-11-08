@@ -20,6 +20,17 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="col-lg-2">
+			<strong>Tipo de Serviço: </strong>
+
+			<%= select_tag 'q[kind_of_service_id_eq]',
+              options_from_collection_for_select(@list_kind_of_services, 'id', 'name', selected: params[:q].present? ? params[:q][:kind_of_service_id_eq] : nil),
+              include_blank: 'Selecione uma opção', class: "form-control"
+			%>
+		
+		</div>
+		
 		<div class="col-lg-2">
 			<strong>Status: </strong>
 			<%= f.select :status_eq,
@@ -28,24 +39,12 @@
 			%>
 		</div>
 
-
-		<div class="col-lg-2">
-			<strong>Tipo de Serviço: </strong>
-
-			<%= select_tag 'q[kind_of_service_id_eq]',
-              options_from_collection_for_select(@list_kind_of_services, 'id', 'name', selected: params[:q].present? ? params[:q][:kind_of_service_id_eq] : nil),
-              include_blank: 'Selecione uma opção', class: "form-control"
-	  %>
-		
-	</div>
-
-	<div class="col-sm-12 col-lg-2">
-			<br>
+		<div class="col-sm-12 col-lg-2">
+			</br>
 			<%= f.submit 'Filtrar', class: 'btn btn-info' %>
 			<%= button_tag 'Limpar', type: 'submit', name: 'cancel', value: true, class: 'btn btn-default' %>
-			<br>
+		</div>
 	</div>
-	<br>
 
 
 <% end %>

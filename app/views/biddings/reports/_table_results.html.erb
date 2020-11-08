@@ -12,9 +12,8 @@
 						<th><%= sort_link(@q, :modality, Bidding.human_attribute_name("modality")) %></th>
 						<th><%= sort_link(@q, :object, Bidding.human_attribute_name("object")) %></th>
 						<th><%= sort_link(@q, :value, Bidding.human_attribute_name("value")) %></th>
-						<th><%= sort_link(@q, :inspection, Bidding.human_attribute_name("inspection")) %></th>
-						<th><%= sort_link(@q, :budge, Bidding.human_attribute_name("budge")) %></th>
-						<th><%= sort_link(@q, :remark, Bidding.human_attribute_name("remark")) %></th>
+						<th><%= sort_link(@q, :inspection, Bidding.human_attribute_name("inspection") + "\n/" + Bidding.human_attribute_name("budge")) %></th>
+						<th><%= sort_link(@q, :company_name, Bidding.human_attribute_name("company")) %></th>
 						<th><%= sort_link(@q, :status, Bidding.human_attribute_name("status")) %></th>
 						<th colspan="2"></th>
 					</tr>
@@ -25,18 +24,33 @@
 						<tr>
 							<td><%= l bidding.date %></td>
 							<td><%= bidding.organ %></td>
-							<td><%= bidding.modality %></td>
+							
+							<% if bidding.website.blank? %>
+								<td><%= bidding.modality %></td>
+							<% else %>
+								<td><a href="<%= bidding.website %>" target="_blank"><b><u><%= bidding.modality %></b></u></a></td>
+							<% end %>
+							
 							<td><%= bidding.object %></td>
-							<td><%= number_with_precision(bidding.value, :precision => 2) %></td>
-							<td><%= bidding.inspection %></td>
-							<td><%= bidding.budge %></td>
-							<td><%= bidding.remark %></td>
+							
+							<!--<td><%= number_with_precision(bidding.value, :precision => 2) %></td>-->
+							<td><%= bidding.value_abbr %></td>
+							
+							<td><%= bidding.inspection + "\n/" + bidding.budge %></td>
+							
+							<% if bidding.company_id == 0 %>
+								<td style="text-align:center;vertical-align: middle;"></td>
+							<% else %>
+								<td style="text-align:center;vertical-align: middle;"><%= link_to image_tag(bidding.company.image_file_name, size: "30x30") %></td>
+							<% end %>
+							
 							<td><%= t("enums.biddings.status.#{bidding.status}") if bidding.status.present? %></td>
 							
-							<td><%= link_to edit_bidding_path(bidding, :startPage => "bidd"), class: "btn btn-outline btn-warning" do %>
+							<td><%= link_to edit_bidding_path(bidding, :startPage => "bidd", q:{:organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :company_id_eq => @company_id_eq, :status_eq => @status_eq}), class: "btn btn-outline btn-warning" do %>
 								<i class="fa fa-edit"></i><% end %>
 							</td>
-							<td><%= link_to bidding_path(bidding, :startPage => "bidd"), class: "btn btn-outline btn-info" do %>
+							
+							<td><%= link_to bidding_path(bidding, :startPage => "bidd", q:{:organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :company_id_eq => @company_id_eq, :status_eq => @status_eq}), class: "btn btn-outline btn-info" do %>
 								<i class="fa fa-eye"></i></i><% end %>
 							</td>
 							

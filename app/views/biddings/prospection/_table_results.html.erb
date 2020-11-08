@@ -15,7 +15,7 @@
 						<th><%= sort_link(@q, :value, Bidding.human_attribute_name("value")) %></th>
 						<th><%= sort_link(@q, :remark, Bidding.human_attribute_name("remark")) %></th>
 						<th><%= sort_link(@q, :status, Bidding.human_attribute_name("status")) %></th>
-						<th><%= sort_link(@q, :company_name, Bidding.human_attribute_name("kind_of_service")) %></th>
+						<th><%= sort_link(@q, :kind_of_service_name, Bidding.human_attribute_name("kind_of_service")) %></th>
 						<th colspan="2"></th>
 					</tr>
 				</thead>
@@ -34,20 +34,23 @@
 							<% end %>
 							
 							<td><%= bidding.object %></td>
-							<td><%= number_with_precision(bidding.value, :precision => 2) %></td>
+							
+							<!--<td><%= number_with_precision(bidding.value, :precision => 2) %></td>-->
+							<td><%= bidding.value_abbr %></td>
+							
 							<td><%= bidding.remark %></td>
 							<td><%= t("enums.biddings.status.#{bidding.status}") if bidding.status.present? %></td>
-							<td><%= bidding.kind_of_service_id %></td>
-							<td><%= link_to edit_bidding_path(bidding, :startPage => "prop"), class: "btn btn-outline btn-warning" do %>
+							
+							<td><%= bidding.kind_of_service.name %></td>
+							
+							
+							<td><%= link_to edit_bidding_path(bidding, :startPage => "prop", q:{:created_at_eq => @created_at_eq, :organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :status_eq => @status_eq}), class: "btn btn-outline btn-warning" do %>
 								<i class="fa fa-edit"></i><% end %>
 							</td>
 							
-							<!-- <td><%= link_to bidding_path(bidding, :startPage => "prop"), class: 'btn btn-outline btn-danger', method: :delete, data: { confirm: 'Ao confirmar esta operação será perdido definitivamente os dados desta licitação. Tem certeza que deseja fazer isto?' } do %>
-								<i class="fa fa-times"></i><% end %>
-							</td> -->
 							
 							<% if bidding.status == "registered" %>
-								<td><%= link_to check_bidding_path(bidding, :startPage => "prop"), class: 'btn btn-outline btn-success' do %>
+								<td><%= link_to check_bidding_path(bidding, :startPage => "prop", q:{:created_at_eq => @created_at_eq, :organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :status_eq => @status_eq}), class: 'btn btn-outline btn-success' do %>
 									<i class="fa fa-check"></i><% end %>
 								</td>
 							<% end %>

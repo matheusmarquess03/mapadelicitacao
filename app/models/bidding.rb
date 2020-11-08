@@ -1,5 +1,8 @@
 class Bidding < ApplicationRecord
 
+	belongs_to :kind_of_service
+	belongs_to :company
+	
 	#Enumerators
 	enum status: {
 		registered: 1,
