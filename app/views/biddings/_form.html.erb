@@ -63,7 +63,7 @@
 
 					 <%= select_tag "bidding[kind_of_service_id]",
 					  options_from_collection_for_select(@list_kind_of_services, 'id', 'name', selected: @bidding.kind_of_service_id),
-					  include_blank: 'Selecione um tipo de serviço', class: "form-control"
+					  include_blank: 'Selecione um tipo de serviço', class: "form-control", required: true
 					%>
 				</div>	
 				
