@@ -17,6 +17,7 @@ class CertificatesController < ApplicationController
 
   # GET /certificates/new
   def new
+	@list_kind_of_services = KindOfService.order(name: :asc)
     @certificate = Certificate.new
   end
 
@@ -65,6 +66,8 @@ class CertificatesController < ApplicationController
   end
 
     def reports
+	@list_kind_of_services = KindOfService.all.order(name: :asc)
+	
     @q = Certificate.ransack(params[:q])
 
     @certificates = @q.result
@@ -78,6 +81,7 @@ class CertificatesController < ApplicationController
 
   private
 	def set_certificate
+		@list_kind_of_services = KindOfService.order(name: :asc)
 		@certificate = Certificate.find(params[:id])
 	end
     
@@ -90,7 +94,7 @@ class CertificatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def certificate_params
-      params.require(:certificate).permit(:number, :value, :object, :responsible_enginner, :work_site, :year, :deadline, :start_date, :end_date, :book, :item, :description, :unit, :quantity, :kind_of_service, :path_file, :company_name)
+      params.require(:certificate).permit(:number, :value, :object, :responsible_enginner, :work_site, :year, :deadline, :start_date, :end_date, :book, :item, :description, :unit, :quantity, :kind_of_service_id, :path_file, :company_name)
     end
 
     def redirect_cancel

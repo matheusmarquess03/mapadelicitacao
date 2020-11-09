@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_06_192523) do
+ActiveRecord::Schema.define(version: 2020_11_09_174352) do
 
   create_table "biddings", force: :cascade do |t|
     t.date "date"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_11_06_192523) do
     t.text "description"
     t.string "unit"
     t.float "quantity"
-    t.string "kind_of_service"
+    t.integer "kind_of_service_id"
     t.string "path_file"
     t.string "company_name"
     t.datetime "created_at", null: false
