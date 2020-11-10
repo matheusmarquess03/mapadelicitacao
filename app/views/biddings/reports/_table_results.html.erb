@@ -41,7 +41,7 @@
 							<% if bidding.company_id == 1 %>
 								<td style="text-align:center;vertical-align: middle;"></td>
 							<% else %>
-								<td style="text-align:center;vertical-align: middle;"><%= link_to image_tag(bidding.company.image_file_name, size: "30x30") %></td>
+								<td style="text-align:center;vertical-align: middle;"><%= link_to image_tag(bidding.company.image_file_name, size: "50x50") %></td>
 							<% end %>
 							
 							<td><%= t("enums.biddings.status.#{bidding.status}") if bidding.status.present? %></td>
