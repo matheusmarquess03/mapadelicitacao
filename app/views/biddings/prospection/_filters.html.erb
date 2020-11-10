@@ -1,7 +1,7 @@
 <%= search_form_for @q, url: prospection_path do |f| %>
 	<div class="row">
 		<div class="col-lg-2">
-			<strong>Data de Criação: </strong>
+			<strong>Data de Prospecção: </strong>
 			<%= date_field_tag 'q[created_at_eq]', params.dig(:q, :created_at_eq), { class: 'form-control' } %>
 		</div>
 		<div class="col-lg-2">

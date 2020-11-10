@@ -66,15 +66,15 @@
           <br />
         </div>
 
-        <div class="form-group">
-          <div class="col-lg-6">
-            <h4>Observação:
-              <%= @bidding.remark %>
-            </h4>
-            <br />
-        </div>
-        </div>
-         
+		<div class="form-group">
+            <div class="col-lg-6">
+				<h4>Tipo de Atestado:
+				  <%= t("enums.biddings.type_of_certificate.#{@bidding.type_of_certificate}") %>
+				</h4>
+				<br />   
+            </div>  
+          </div> 
+        
          <div class="form-group">
           <div class="col-lg-6">
             <h4>Site:
@@ -84,14 +84,14 @@
           </div>
          </div>  
 
-          <div class="form-group">
-            <div class="col-lg-6">
-            <h4>Tipo de Certificado:
-              <%= t("enums.biddings.type_of_certificate.#{@bidding.type_of_certificate}") %>
-            </h4>
-            <br />   
-            </div>  
-          </div> 
+        <div class="form-group">
+			<div class="col-lg-6">
+				<h4>Atestados:
+				 <%= @bidding.remark %>
+				</h4>
+				<br />
+			</div>
+        </div>  
       <br />
 
         <div class="form-group">

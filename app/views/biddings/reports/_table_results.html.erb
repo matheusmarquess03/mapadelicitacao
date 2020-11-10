@@ -12,7 +12,7 @@
 						<th><%= sort_link(@q, :modality, Bidding.human_attribute_name("modality")) %></th>
 						<th><%= sort_link(@q, :object, Bidding.human_attribute_name("object")) %></th>
 						<th><%= sort_link(@q, :value, Bidding.human_attribute_name("value")) %></th>
-						<th><%= sort_link(@q, :inspection, Bidding.human_attribute_name("inspection") + "\n/" + Bidding.human_attribute_name("budge")) %></th>
+						<th style="text-align:center;vertical-align: middle;"><%= sort_link(@q, :inspection, Bidding.human_attribute_name("inspection") + "\n" + Bidding.human_attribute_name("budge")) %></th>
 						<th><%= sort_link(@q, :company_name, Bidding.human_attribute_name("company")) %></th>
 						<th><%= sort_link(@q, :status, Bidding.human_attribute_name("status")) %></th>
 						<th colspan="2"></th>
