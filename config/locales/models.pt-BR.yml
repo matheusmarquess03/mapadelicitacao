@@ -19,6 +19,7 @@
         type_of_certificate: "Tipo de Atestado"
         kind_of_service: "Tipo de Serviço"
         company: "Empresa"
+        uploads: "Anexos"
         
       certificate:
         number: "Número"
