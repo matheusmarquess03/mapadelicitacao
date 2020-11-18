@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_09_174352) do
+ActiveRecord::Schema.define(version: 2020_11_12_122218) do
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "biddings", force: :cascade do |t|
     t.date "date"
@@ -29,6 +50,10 @@ ActiveRecord::Schema.define(version: 2020_11_09_174352) do
     t.integer "company_id"
     t.integer "kind_of_service_id"
     t.string "value_abbr"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "certificates", force: :cascade do |t|
@@ -55,7 +80,7 @@ ActiveRecord::Schema.define(version: 2020_11_09_174352) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
-    t.string "cnpj"
+    t.integer "cnpj"
     t.string "image_file_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,6 +88,12 @@ ActiveRecord::Schema.define(version: 2020_11_09_174352) do
 
   create_table "kind_of_services", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "kinf_of_service"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

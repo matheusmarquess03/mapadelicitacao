@@ -1,6 +1,5 @@
 
-
-  <div class="col-lg-12">
+<div class="col-lg-12">
     <div class="panel panel-default">
 
       <div class="panel-heading">
@@ -122,6 +121,22 @@
             </div>  
           </div> 
       <br />
+      
+      <% if @bidding.uploads.exists? %>
+        <div class="form-group">
+            <div class="col-lg-6">
+                <h4>Anexos:</h4>
+                    <% @bidding.uploads.each do |upload| %>
+                      <%= link_to rails_blob_path(upload, disposition: :attachment) do %>
+                      <i class="fa fa-download"></i> <%= upload.filename.to_s %>
+                    <% end  %>
+                    <% end  %>
+                  
+            </div>  
+        </div>
+
+      
+      <br />
 </div>
 
 	<%= hidden_field_tag 'startPage', @startPage  %>
@@ -138,6 +153,7 @@
 </div>
 <%= link_to 'Voltar', biddings_path(:startPage => "bidd", q:{:organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :company_id_eq => @company_id_eq, :status_eq => @status_eq}), class: 'btn btn-secondary btn-lg' %>
 </div>
+<% end %>
 
 
 

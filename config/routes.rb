@@ -7,9 +7,14 @@ Rails.application.routes.draw do
 	get 'biddings', to: 'biddings#reports'
     get 'biddings/:id/check', to: 'biddings#check', as: 'check_bidding'
 	get 'certificates', to: 'certificates#reports'
-  
+    delete 'biddings/:id/destroy_attachment', to: 'biddings#destroy_attachment', as: 'destroy_attachment_bidding'
 	resources :certificates
-	resources :biddings
+	resources :biddings do
+		collection {post :import }
+	end
+	resources :certificates do
+		collection {post :import }
+	end
 	#resources :biddings do
 	#	get 'biddings/', to: 'biddings#index', as: 'biddings'
 	#	get 'biddings/new', to: 'biddings#index', as: 'new_bidding'

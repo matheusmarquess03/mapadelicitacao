@@ -9,8 +9,19 @@ class BiddingsController < ApplicationController
   # GET /biddings
   # GET /biddings.json
   def index
-	@biddings = Bidding.order(date: :asc)
+	@bidding = Bidding.order(date: :asc)
+	respond_to do |format|
+		format.html
+		format.csv {send_data @biddings.to_csv (['date', 'organ', 'modality', 'object', 'value', 'inspection', 'budge', 'remark', 'status'])}
   end
+end
+
+
+  def import
+  	Bidding.import(params[:file])
+  	redirect_to root_url, notice: "Arquivo Importado"
+ end
+  	
 
   # GET /biddings/1
   # GET /biddings/1.json
@@ -132,6 +143,10 @@ class BiddingsController < ApplicationController
 
 	respond_to do |format|
 		format.html
+		
+
+		format.csv {send_data(Bidding.bidding_csv(@biddings),
+                    filename: "mapa-de-licitacao-#{Date.today}.csv")}		
     end
   end
 
@@ -146,9 +161,18 @@ class BiddingsController < ApplicationController
           .order(date: :asc)
 
 	respond_to do |format|
-		format.html
+		format.html        
+        format.csv {send_data(Bidding.bidding_csv(@biddings),
+                    filename: "tabela-de-prospecçao-#{Date.today}.csv")}		
     end
   end
+
+  def destroy_attachment
+      @blob_file = ActiveStorage::Blob.find_signed(params[:id])
+      @blob_file.attachments.first.purge
+      @blob_file.purge
+      redirect_back fallback_location: biddings_path
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -164,7 +188,7 @@ class BiddingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bidding_params
-      pp = params.require(:bidding).permit(:date, :organ, :modality, :object, :value, :value_abbr, :inspection, :budge, :remark, :status, :website, :type_of_certificate, :company_id, :kind_of_service_id)
+      pp = params.require(:bidding).permit(:date, :organ, :modality, :object, :value, :value_abbr, :inspection, :budge, :remark, :status, :website, :type_of_certificate, :company_id, :kind_of_service_id, :uploads)
 	  pp[:status] = params[:bidding][:status].to_i
 	  pp[:type_of_certificate] = params[:bidding][:type_of_certificate].to_i
 	  pp[:company_id] = params[:bidding][:company_id].to_i
@@ -199,3 +223,7 @@ class BiddingsController < ApplicationController
 	
 	
 end
+
+	
+	
+

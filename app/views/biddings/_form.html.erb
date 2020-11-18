@@ -127,7 +127,53 @@
 							{ include_blank: 'Selecione o status' },
 							{ class: 'form-control' }
 						%>
+						<br />
 					</div>
+
+				        <div class="col-lg-12">
+					        <div class="form-group">
+					          <div class="col-lg-6">
+					            <% if @bidding.uploads.exists? %>
+					              <div class="table-responsive">
+					                <table class="table table-hover">
+					                  <thead>
+					                    <tr>
+					                      <th>Nome do Arquivo</th>
+					                      <th>Tamanho do Arquivo</th>
+					                    </tr>
+					                  </thead>
+					                  <tbody>
+					                    <% @bidding.uploads.each do |upload| %>
+					                      <tr>
+					                        <td>
+					                          <%= link_to rails_blob_path(upload, disposition: "attachment") do %>
+					                            <i class="fa fa-download"></i> <%= upload.filename.to_s %>
+					                          <% end %>
+					                        </td>
+					                        <td><%= number_to_human_size(upload.blob.byte_size) %> </td>
+					                        <td>
+					                          <%= link_to destroy_attachment_bidding_path(upload.signed_id), method: :delete, data: { confirm: 'Tem certeza que deseja remover este arquivo?' } do %>
+					                            <i class="fa fa-times"></i> Remover arquivo
+					                          <% end %>
+					                        </td>
+					                      </tr>
+					                    <% end %>
+					                  </tbody>
+					                </table>
+					              </div>
+					            <% end %>
+					          </div>
+					        </div>
+					      </div>
+
+
+					<div class="col-lg-6">
+						<%= form.label :uploads %>
+						<br />
+						<%= form.file_field :uploads, multiple: false,  direct_upload: true %>
+						<br>
+					</div>
+
 				</div>
 			</div>
 			

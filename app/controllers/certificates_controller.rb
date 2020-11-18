@@ -8,6 +8,11 @@ class CertificatesController < ApplicationController
   # GET /certificates.json
   def index
     @certificates = Certificate.limit(100)
+    respond_to do |format|
+    format.html
+    format.csv {send_data @certificates.to_csv (['number', 'value', 'object', 'responsible_enginner', 'work_site', 'year', 'deadline', 'start_date', 'end_date',
+      'book', 'item', 'description','unit','quantity','kind_of_service','path_file', 'company_name'])}
+  end
   end
 
   # GET /certificates/1
@@ -76,6 +81,8 @@ class CertificatesController < ApplicationController
 
     respond_to do |format|
       format.html
+      format.csv {send_data(Certificate.certificate_csv(@certificates),
+                    filename: "tabela-de-atestados-#{Date.today}.csv")}  
       end
     end
 
