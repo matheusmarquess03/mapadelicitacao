@@ -34,6 +34,7 @@ class Bidding < ApplicationRecord
     
     CSV.generate(headers: true, encoding: 'ISO-8859-1') do |csv|
       csv << headers
+	  
 
       biddings.each do |bidding|
       
