@@ -163,7 +163,7 @@ end
 	respond_to do |format|
 		format.html        
         format.csv {send_data(Bidding.bidding_csv(@biddings),
-                    filename: "tabela-de-prospecçao-#{Date.today}.csv")}		
+                    filename: "tabela-de-prospeccao-#{Date.today}.csv")}		
     end
   end
 
