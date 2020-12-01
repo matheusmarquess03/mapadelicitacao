@@ -79,7 +79,7 @@
 			<div class="form-group">
 				<div class="col-lg-6">
 					<h4>Site:
-						<% if bidding.website.blank? %>
+						<% if @bidding.website.blank? %>
 								<%= @bidding.website %>
 						<% else %>
 								<a href="<%= @bidding.website %>" target="_blank"><b><u><%= @bidding.website %></b></u></a>
