@@ -12,218 +12,170 @@
 	<% end %>
 
 	<div class="col-lg-12">
-		<div class="panel panel-default">
+			<div class="panel panel-default">
 
-			<div class="panel-heading">
-				<h4>Cadastrar Licitações</h4>
-			</div>
-		
-			<br/>
+				<div class="panel-heading">
+					<h4>Cadastrar Licitações</h4>
+				</div>
+			
+				<br/>
 
-		<div class="panel-body">
-			<div class="form-group">
-				<div class="col-lg-6">
-					<%= form.label :date %>
-					<%= date_field_tag 'bidding[date]', @bidding.date.present? ? @bidding.date : nil, class: 'form-control', required: true %>
-				</div>
-				<div class="col-lg-6">
-					<%= form.label :organ %>
-					<%= form.text_field :organ, class: 'form-control', required: true %><br>
-				</div>
-			</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<div class="col-lg-6">
+							<%= form.label :date %>
+							<%= date_field_tag 'bidding[date]', @bidding.date.present? ? @bidding.date : nil, class: 'form-control', required: true %>
+						</div>
+						<div class="col-lg-6">
+							<%= form.label :organ %>
+							<%= form.text_field :organ, class: 'form-control', required: true %><br>
+						</div>
+					</div>
 
-			<div class="form-group">
-				<div class="col-lg-6">
-					<%= form.label :modality %>
-					<%= form.text_field :modality, class: 'form-control', required: true  %>
-				</div>
-				<div class="col-lg-6">
-					<%= form.label :object %>
-					<%= form.text_field :object, class: 'form-control', required: true  %>
-					<br />
-				</div>
-			</div>
+					<div class="form-group">
+						<div class="col-lg-6">
+							<%= form.label :modality %>
+							<%= form.text_field :modality, class: 'form-control', required: true  %>
+						</div>
+						<div class="col-lg-6">
+							<%= form.label :object %>
+							<%= form.text_field :object, class: 'form-control', required: true  %>
+							<br />
+						</div>
+					</div>
 
-			<div class="form-group">
-				<div class="col-lg-6">
-					<%= form.label :value_abbr %>
-					<%= form.text_field :value_abbr, class: 'form-control', required: true  %>
-				</div>
+					<div class="form-group">
+						<div class="col-lg-6">
+							<%= form.label :value_abbr %>
+							<%= form.text_field :value_abbr, class: 'form-control', required: true  %>
+						</div>
+						
+						<div class="col-lg-6">
+							<%= form.label :value %>
+							<%=  number_field_tag 'bidding[value]', @bidding.value.present? ? @bidding.value : nil, class: 'form-control', step:0.01, required: true  %>
+							<br>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-lg-6">
+							<strong>Tipo de Serviço: </strong>
+
+							 <%= select_tag "bidding[kind_of_service_id]",
+							  options_from_collection_for_select(@list_kind_of_services, 'id', 'name', selected: @bidding.kind_of_service_id),
+							  include_blank: 'Selecione um tipo de serviço', class: "form-control", required: true
+							%>
+						</div>	
+						
+						<div class="col-lg-6">
+							<%= form.label :website %>
+							<%= form.text_field :website, class: 'form-control' %><br>
+						</div>
+					</div>
 				
-				<div class="col-lg-6">
-					<%= form.label :value %>
-					<%=  number_field_tag 'bidding[value]', @bidding.value.present? ? @bidding.value : nil, class: 'form-control', step:0.01, required: true  %>
-					<br>
+					<div class="form-group">
+						<div class="col-lg-6">
+							<%= form.label :type_of_certificate %>
+							<%= form.select :type_of_certificate,
+								options_for_select(biddings_type_of_certificates_i18n, selected: Bidding.type_of_certificates[form.object.type_of_certificate]),
+								{ include_blank: 'Selecione o tipo de certificado' },
+								{ class: 'form-control', required: true }
+							%>
+						</div>
+							
+						<div class="col-lg-6">
+							<%= form.label :remark %>
+							<%= form.text_area :remark, class: 'form-control', required: true  %>
+							<br>
+						</div>
+					</div>
+
+					<% if @startPage == "prop" %>
+						<div style="visibility: hidden">
+					<% else %>
+						<div>
+					<% end %>
+					
+							<div class="form-group">
+								<div class="col-lg-6">
+									<%= form.label :inspection %>
+									<%= form.text_field :inspection, class: 'form-control'  %>
+								</div>
+								
+								<div class="col-lg-6">
+									<%= form.label :budge %>
+									<%= form.text_field :budge, class: 'form-control' %>
+									<br>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-lg-6">
+									<strong>Empresa: </strong>
+
+									 <%= select_tag "bidding[company_id]",
+									  options_from_collection_for_select(@list_companies, 'id', 'name', selected: @bidding.company_id),
+									  include_blank: 'Selecione uma empresa', class: "form-control"
+									%>
+								</div>
+							
+								<div class="col-lg-6">
+									<%= form.label :status %>
+									<%= form.select :status,
+										options_for_select(biddings_statuses_i18n, selected: Bidding.statuses[form.object.status]),
+										{ include_blank: 'Selecione o status' },
+										{ class: 'form-control' }
+									%>
+									<br />
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-lg-12">
+							<div class="form-group">
+								<div class="col-lg-6">
+									<% if @bidding.uploads.exists? %>
+										<div class="table-responsive">
+											<table class="table table-hover">
+												<thead>
+													<tr>
+													  <th>Nome do Arquivo</th>
+													  <th>Tamanho do Arquivo</th>
+													</tr>
+												</thead>
+												
+												<tbody>
+												<% @bidding.uploads.each do |upload| %>
+													<tr>
+														<td>
+														  <%= link_to rails_blob_path(upload, disposition: "attachment") do %>
+															<i class="fa fa-download"></i> <%= upload.filename.to_s %>
+														  <% end %>
+														</td>
+														<td><%= number_to_human_size(upload.blob.byte_size) %> </td>
+														<td>
+														  <%= link_to destroy_attachment_bidding_path(upload.signed_id), method: :delete, data: { confirm: 'Tem certeza que deseja remover este arquivo?' } do %>
+															<i class="fa fa-times"></i> Remover arquivo
+														  <% end %>
+														</td>
+													</tr>
+												<% end %>
+												</tbody>
+											</table>
+										</div>
+									<% end %>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-6">
+							<%= form.label :uploads %>
+							<br />
+							<%= form.file_field :uploads, multiple: false,  direct_upload: true %>
+							<br>
+						</div>
 				</div>
 			</div>
-			
-			<div class="form-group">
-				<div class="col-lg-6">
-					<strong>Tipo de Serviço: </strong>
-
-					 <%= select_tag "bidding[kind_of_service_id]",
-					  options_from_collection_for_select(@list_kind_of_services, 'id', 'name', selected: @bidding.kind_of_service_id),
-					  include_blank: 'Selecione um tipo de serviço', class: "form-control", required: true
-					%>
-				</div>	
-				
-				<div class="col-lg-6">
-					<%= form.label :website %>
-					<%= form.text_field :website, class: 'form-control' %><br>
-				</div>
-			</div>
-			
-			<div class="form-group">
-				<div class="col-lg-6">
-					<%= form.label :type_of_certificate %>
-					<%= form.select :type_of_certificate,
-						options_for_select(biddings_type_of_certificates_i18n, selected: Bidding.type_of_certificates[form.object.type_of_certificate]),
-						{ include_blank: 'Selecione o tipo de certificado' },
-						{ class: 'form-control', required: true }
-					%>
-				</div>
-					
-				<div class="col-lg-6">
-					<%= form.label :remark %>
-					<%= form.text_area :remark, class: 'form-control', required: true  %>
-					<br>
-				</div>
-			</div>
-
-			<div class="col-lg-12">
-					        <div class="form-group">
-					          <div class="col-lg-6">
-					            <% if @bidding.uploads.exists? %>
-					              <div class="table-responsive">
-					                <table class="table table-hover">
-					                  <thead>
-					                    <tr>
-					                      <th>Nome do Arquivo</th>
-					                      <th>Tamanho do Arquivo</th>
-					                    </tr>
-					                  </thead>
-					                  <tbody>
-					                    <% @bidding.uploads.each do |upload| %>
-					                      <tr>
-					                        <td>
-					                          <%= link_to rails_blob_path(upload, disposition: "attachment") do %>
-					                            <i class="fa fa-download"></i> <%= upload.filename.to_s %>
-					                          <% end %>
-					                        </td>
-					                        <td><%= number_to_human_size(upload.blob.byte_size) %> </td>
-					                        <td>
-					                          <%= link_to destroy_attachment_bidding_path(upload.signed_id), method: :delete, data: { confirm: 'Tem certeza que deseja remover este arquivo?' } do %>
-					                            <i class="fa fa-times"></i> Remover arquivo
-					                          <% end %>
-					                        </td>
-					                      </tr>
-					                    <% end %>
-					                  </tbody>
-					                </table>
-					              </div>
-					            <% end %>
-					          </div>
-					        </div>
-					      </div>
-
-
-					<div class="col-lg-6">
-						<%= form.label :uploads %>
-						<br />
-						<%= form.file_field :uploads, multiple: false,  direct_upload: true %>
-						<br>
-					</div>
-			
-			<% if @startPage == "prop" %>
-				<div style="visibility: hidden">
-			<% else %>
-				<div>
-			<% end %>
-			
-				<div class="form-group">
-					<div class="col-lg-6">
-						<%= form.label :inspection %>
-						<%= form.text_field :inspection, class: 'form-control'  %>
-					</div>
-					
-					<div class="col-lg-6">
-						<%= form.label :budge %>
-						<%= form.text_field :budge, class: 'form-control' %>
-						<br>
-					</div>
-					
-				</div>
-					
-				<div class="form-group">
-					<div class="col-lg-6">
-						<strong>Empresa: </strong>
-
-						 <%= select_tag "bidding[company_id]",
-						  options_from_collection_for_select(@list_companies, 'id', 'name', selected: @bidding.company_id),
-						  include_blank: 'Selecione uma empresa', class: "form-control"
-						%>
-					</div>
-					
-					<div class="col-lg-6">
-						<%= form.label :status %>
-						<%= form.select :status,
-							options_for_select(biddings_statuses_i18n, selected: Bidding.statuses[form.object.status]),
-							{ include_blank: 'Selecione o status' },
-							{ class: 'form-control' }
-						%>
-						<br />
-					</div>
-
-				        <div class="col-lg-12">
-					        <div class="form-group">
-					          <div class="col-lg-6">
-					            <% if @bidding.uploads.exists? %>
-					              <div class="table-responsive">
-					                <table class="table table-hover">
-					                  <thead>
-					                    <tr>
-					                      <th>Nome do Arquivo</th>
-					                      <th>Tamanho do Arquivo</th>
-					                    </tr>
-					                  </thead>
-					                  <tbody>
-					                    <% @bidding.uploads.each do |upload| %>
-					                      <tr>
-					                        <td>
-					                          <%= link_to rails_blob_path(upload, disposition: "attachment") do %>
-					                            <i class="fa fa-download"></i> <%= upload.filename.to_s %>
-					                          <% end %>
-					                        </td>
-					                        <td><%= number_to_human_size(upload.blob.byte_size) %> </td>
-					                        <td>
-					                          <%= link_to destroy_attachment_bidding_path(upload.signed_id), method: :delete, data: { confirm: 'Tem certeza que deseja remover este arquivo?' } do %>
-					                            <i class="fa fa-times"></i> Remover arquivo
-					                          <% end %>
-					                        </td>
-					                      </tr>
-					                    <% end %>
-					                  </tbody>
-					                </table>
-					              </div>
-					            <% end %>
-					          </div>
-					        </div>
-					      </div>
-
-
-					<div class="col-lg-6">
-						<%= form.label :uploads %>
-						<br />
-						<%= form.file_field :uploads, multiple: false,  direct_upload: true %>
-						<br>
-					</div>
-
-				</div>
-			</div>
-			
-			
-		</div>
-	</div>
   
       
 	<br />
