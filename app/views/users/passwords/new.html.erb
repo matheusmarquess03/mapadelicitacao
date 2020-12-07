@@ -1,0 +1,26 @@
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+               <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Recuperação de Senha</h3>
+                </div>
+                <div class="panel-body">
+                  <%= form_for(resource, as: resource_name, url: password_path(resource_name)) do |f| %>
+                  <fieldset>
+                    <div class="form-group">
+                      <%= f.email_field :email, class: 'form-control', placeholder: 'Digite seu E-mail', autofocus: true, autocomplete: "email" %>
+                    </div>
+                    <%= f.submit "Enviar E-mail", class: 'btn btn-lg btn-success btn-block' %>
+                    <br>
+                    <%= link_to "Entrar", new_user_session_path	 %>
+                    <br>
+                    <%= link_to "Inscrever-se", new_user_registration_path %>
+                  </fieldset>
+                  <% end %><br/>  
+                </div>
+              </div> 
+            </div>
+        </div>
+    </div>

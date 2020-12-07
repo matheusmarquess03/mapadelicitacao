@@ -28,6 +28,8 @@
             <%= form.label :number  %>
             <%= form.text_field :number, class: 'form-control', required: true  %>
         </div>
+        <br />
+        
         <div class="col-lg-6">
           <%= form.label :value %>
           <%= form.text_field :value, class: 'form-control', required: false %><br>
@@ -35,7 +37,7 @@
       </div>
 
       <div class="form-group">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
          <%= form.label :object %>
          <%= form.text_area :object, class: 'form-control', required: false  %>
          <br />
@@ -66,17 +68,18 @@
           <%= form.label :deadline %>
           <%= form.text_field :deadline, class: 'form-control', required: false %><br>
         </div>
-        <div class="col-lg-6">
+        <div class="col-sm-6">
           <%= form.label :start_date %>
           <%= date_field_tag 'certificate[start_date]', @certificate.start_date.present? ? @certificate.start_date : nil, class: 'form-control', required: false %>
         </div>
 
           <div class="row">
-          <div class="col-lg-6">
+          <div class="col-sm-6">
             <%= form.label :end_date %>
             <%= date_field_tag 'certificate[end_date]', @certificate.end_date.present? ? @certificate.end_date : nil, class: 'form-control', required: false %>
           </div>
       </div>
+      <br />
 
        <div class="form-group">
         <div class="col-lg-6">
@@ -111,6 +114,7 @@
 				include_blank: 'Selecione um tipo de serviço', class: "form-control", required: true
 			%>
         </div>
+        <br />
 
          <div class="form-group">
         <div class="col-lg-6">
@@ -129,8 +133,8 @@
       
   <br />
   
-  <a class="btn btn-secondary btn-lg" <%= link_to "Voltar", certificates_path %>
-  <button name="button" type="submit" class="btn btn-success btn-lg">Salvar</button>
+  <a class="btn btn-secondary btn-sm" <%= link_to "Voltar", certificates_path %>
+  <button name="button" type="submit" class="btn btn-success btn-sm">Salvar</button>
 
 </div>
 <% end %> 

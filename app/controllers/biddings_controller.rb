@@ -2,6 +2,7 @@ class BiddingsController < ApplicationController
   before_action :set_bidding, only: [:show, :edit, :update, :destroy, :check]
   before_action :redirect_cancel, only: [:reports]
   before_action :redirect_prop_cancel, only: [:prospection]
+  before_action :authenticate_user!
   
   skip_before_action :verify_authenticity_token 
   protect_from_forgery with: :null_session

@@ -21,43 +21,46 @@
 				<br/>
 
 				<div class="panel-body">
-					<div class="form-group">
 						<div class="col-lg-6">
 							<%= form.label :date %>
 							<%= date_field_tag 'bidding[date]', @bidding.date.present? ? @bidding.date : nil, class: 'form-control', required: true %>
 						</div>
+						<br/>
 						<div class="col-lg-6">
 							<%= form.label :organ %>
 							<%= form.text_field :organ, class: 'form-control', required: true %><br>
 						</div>
-					</div>
+					
 
-					<div class="form-group">
+					
 						<div class="col-lg-6">
 							<%= form.label :modality %>
 							<%= form.text_field :modality, class: 'form-control', required: true  %>
 						</div>
+						<br/>
+
 						<div class="col-lg-6">
 							<%= form.label :object %>
 							<%= form.text_field :object, class: 'form-control', required: true  %>
 							<br />
 						</div>
-					</div>
+					
 
-					<div class="form-group">
+					
 						<div class="col-lg-6">
 							<%= form.label :value_abbr %>
 							<%= form.text_field :value_abbr, class: 'form-control', required: true  %>
 						</div>
+						<br/>
 						
 						<div class="col-lg-6">
 							<%= form.label :value %>
 							<%=  number_field_tag 'bidding[value]', @bidding.value.present? ? @bidding.value : nil, class: 'form-control', step:0.01, required: true  %>
 							<br>
 						</div>
-					</div>
 					
-					<div class="form-group">
+					
+					
 						<div class="col-lg-6">
 							<strong>Tipo de Serviço: </strong>
 
@@ -65,15 +68,16 @@
 							  options_from_collection_for_select(@list_kind_of_services, 'id', 'name', selected: @bidding.kind_of_service_id),
 							  include_blank: 'Selecione um tipo de serviço', class: "form-control", required: true
 							%>
-						</div>	
+						</div>
+						<br/>	
 						
 						<div class="col-lg-6">
 							<%= form.label :website %>
 							<%= form.text_field :website, class: 'form-control' %><br>
 						</div>
-					</div>
+					
 				
-					<div class="form-group">
+					
 						<div class="col-lg-6">
 							<%= form.label :type_of_certificate %>
 							<%= form.select :type_of_certificate,
@@ -82,13 +86,14 @@
 								{ class: 'form-control', required: true }
 							%>
 						</div>
+						<br/>
 							
 						<div class="col-lg-6">
 							<%= form.label :remark %>
 							<%= form.text_area :remark, class: 'form-control', required: true  %>
 							<br>
 						</div>
-					</div>
+					
 
 					<% if @startPage == "prop" %>
 						<div style="visibility: hidden">
@@ -191,13 +196,13 @@
 	
 	<% if @startPage == "prop" %>
 		<%= hidden_field_tag 'q[created_at_eq]', @created_at_eq %>
-		<%= link_to 'Voltar', prospection_path(:startPage => "prop", q:{:created_at_eq => @created_at_eq, :organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :status_eq => @status_eq}), class: 'btn btn-secondary btn-lg' %>
+		<%= link_to 'Voltar', prospection_path(:startPage => "prop", q:{:created_at_eq => @created_at_eq, :organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :status_eq => @status_eq}), class: 'btn btn-secondary btn-sm' %>
 	<% else %>
 	    <%= hidden_field_tag 'q[company_id_eq]', @company_id_eq %>
-		<%= link_to 'Voltar', biddings_path(:startPage => "bidd", q:{:organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :company_id_eq => @company_id_eq, :status_eq => @status_eq}), class: 'btn btn-secondary btn-lg' %>
+		<%= link_to 'Voltar', biddings_path(:startPage => "bidd", q:{:organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :company_id_eq => @company_id_eq, :status_eq => @status_eq}), class: 'btn btn-secondary btn-sm' %>
 	<% end %>
 	
-	<%= button_tag 'Salvar', class: 'btn btn-success btn-lg' %>
+	<%= button_tag 'Salvar', class: 'btn btn-success btn-sm' %>
 </div>
 <% end %>
 

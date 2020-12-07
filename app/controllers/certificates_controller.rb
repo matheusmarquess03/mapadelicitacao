@@ -2,7 +2,8 @@ class CertificatesController < ApplicationController
   before_action :set_certificate_list, only: %i[reports]
   before_action :set_certificate, only: [:show, :edit, :update, :destroy]
   before_action :redirect_cancel, only: [:reports]
-  skip_before_action :verify_authenticity_token 
+  skip_before_action :verify_authenticity_token
+  before_action :authenticate_user! 
   protect_from_forgery with: :null_session
   # GET /certificates
   # GET /certificates.json

@@ -7,16 +7,19 @@
 				<div class="col-lg-6">
 					<%= date_field_tag 'q[date_gteq]', params.dig(:q, :date_gteq), { class: 'form-control' } %>
 				</div>
+				<br/>
 			
 				<div class="col-lg-6">
 					<%= date_field_tag 'q[date_lteq]',  params.dig(:q, :date_lteq), { class: 'form-control' } %>
 				</div>
 			</div>
 		</div>
+		<br/>
 		<div class="col-lg-2">
 			<strong>Órgão: </strong>
 			<%= f.text_field :organ_cont, { class: 'form-control' } %>
 		</div>
+		<br/>
 		
 		<div class="col-lg-2">
 			<strong>Empresa: </strong>
@@ -25,6 +28,7 @@
               include_blank: 'Selecione uma empresa', class: "form-control"
 			%>
 		</div>
+		<br/>
 		
 		<div class="col-lg-2">
 			<strong>Tipo de Serviço: </strong>
@@ -35,6 +39,7 @@
 			%>
 		
 		</div>
+		<br/>
 		
 		<div class="col-lg-2">
 			<strong>Status: </strong>
@@ -43,6 +48,7 @@
 				{ include_blank: 'Todos' }, { class: 'form-control' }
 			%>
 		</div>
+		
 		
 		<div class="col-sm-12 col-lg-2">
 			</br>

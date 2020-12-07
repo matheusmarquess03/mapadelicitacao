@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :profiles
+  devise_for :views
+  devise_for :users
   resources :kind_of_services
   resources :services
   resources :companies

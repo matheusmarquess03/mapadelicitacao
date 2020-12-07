@@ -1,7 +1,9 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4>Atestados
-	<%= link_to "Cadastrar", new_certificate_path,  class: "btn btn-outline btn-success pull-right", style: "margin-top: -5px" %>
+      <% if current_user.profile_id != 1 %>
+	     <%= link_to "Cadastrar", new_certificate_path,  class: "btn btn-outline btn-success pull-right", style: "margin-top: -5px" %>
+      <% end %>
 	</h4>
   </div>
   <br/>

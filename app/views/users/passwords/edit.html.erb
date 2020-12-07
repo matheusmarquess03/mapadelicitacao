@@ -1,0 +1,30 @@
+<div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+               <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Recuperar Conta</h3>
+                </div>
+                <div class="panel-body">
+                 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+                  <%= f.hidden_field :reset_password_token %>
+                  <fieldset>
+                    <div class="form-group">
+                      <%= f.password_field :password, class: 'form-control', placeholder: 'Senha de 6 caracteres ou mais', autocomplete: "off" %>
+                    </div>
+                    <div class="form-group">
+                      <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirme a senha', autocomplete: "off" %>
+                    </div>
+                    
+                    <%= f.submit "Cadastrar", class: 'btn btn-lg btn-success btn-block' %>
+                    <br>
+                    <%= link_to "Entrar", new_user_session_path %>
+                    <br>
+                    <%= link_to "Inscrever-se", new_user_registration_path %>
+                  </fieldset>
+                  <% end %> 
+                </div>
+              </div> 
+            </div>
+        </div>
+    </div>

@@ -6,22 +6,28 @@
 			<strong>Data de Prospecção: </strong>
 			<%= date_field_tag 'q[created_at_eq]', params.dig(:q, :created_at_eq), { class: 'form-control' } %>
 		</div>
+		<br/>
+
 		<div class="col-lg-2">
 			<strong>Órgão: </strong>		
 			<%= f.text_field :organ_cont, { class: 'form-control' } %>
 		</div>
+		<br/>
+
 		<div class="col-lg-4">
 			<strong>Intervalo de datas: </strong>
 			<div class="row">
 				<div class="col-lg-6">
 					<%= date_field_tag 'q[date_gteq]', params.dig(:q, :date_gteq), { class: 'form-control' } %>
 				</div>
+				<br/>
 			
 				<div class="col-lg-6">
 					<%= date_field_tag 'q[date_lteq]',  params.dig(:q, :date_lteq), { class: 'form-control' } %>
 				</div>
 			</div>
 		</div>
+		<br/>
 		
 		<div class="col-lg-2">
 			<strong>Tipo de Serviço: </strong>
@@ -32,6 +38,7 @@
 			%>
 		
 		</div>
+		<br/>
 		
 		<div class="col-lg-2">
 			<strong>Status: </strong>

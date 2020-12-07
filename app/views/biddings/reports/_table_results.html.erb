@@ -1,9 +1,9 @@
 <div class="panel panel-default">
 	<div class="panel-heading"> 
 
-		<%= link_to biddings_path(format: :csv), class: 'btn btn-link' do %>
+		<!--<%= link_to biddings_path(format: :csv), class: 'btn btn-link' do %>
       <i class="fa fa-download"></i> Exportar para Planilha
-    <% end %>
+    <% end %> -->
 	</div>
 
 	<div class="panel-body">
@@ -49,10 +49,12 @@
 							<% end %>
 							
 							<td><%= t("enums.biddings.status.#{bidding.status}") if bidding.status.present? %></td>
-							
-							<td><%= link_to edit_bidding_path(bidding, :startPage => "bidd", q:{:organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :company_id_eq => @company_id_eq, :status_eq => @status_eq}), class: "btn btn-outline btn-warning" do %>
-								<i class="fa fa-edit"></i><% end %>
-							</td>
+							<% if current_user.profile_id != 1 %>
+								<td><%= link_to edit_bidding_path(bidding, :startPage => "bidd", q:{:organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :company_id_eq => @company_id_eq, :status_eq => @status_eq}), class: "btn btn-outline btn-warning" do %>
+									<i class="fa fa-edit"></i><% end %>
+								</td>
+							<% end %>
+
 							
 							<td><%= link_to bidding_path(bidding, :startPage => "bidd", q:{:organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :company_id_eq => @company_id_eq, :status_eq => @status_eq}), class: "btn btn-outline btn-info" do %>
 								<i class="fa fa-eye"></i></i><% end %>
