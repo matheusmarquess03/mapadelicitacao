@@ -25,7 +25,7 @@
 							<%= form.label :date %>
 							<%= date_field_tag 'bidding[date]', @bidding.date.present? ? @bidding.date : nil, class: 'form-control', required: true %>
 						</div>
-						<br/>
+						
 						<div class="col-lg-6">
 							<%= form.label :organ %>
 							<%= form.text_field :organ, class: 'form-control', required: true %><br>
