@@ -18,6 +18,7 @@
             <th><%= sort_link(@q, :book, Certificate.human_attribute_name("book")) %></th>
             <th><%= sort_link(@q, :item, Certificate.human_attribute_name("item")) %></th>
             <th><%= sort_link(@q, :company_name, Certificate.human_attribute_name("company_name")) %></th>
+            <th><%= sort_link(@q, :verified, Certificate.human_attribute_name("verified")) %></th>
             <th colspan="2"></th>
           </tr>
         </thead>
@@ -33,6 +34,7 @@
                     <td><%= certificate.book %></td>
                     <td><%= certificate.item %></td>
                     <td><%= certificate.company_name %></td>
+                    <td><%= certificate.verified %></td>
               
              <!-- <td><%= link_to edit_certificate_path(certificate), class: "btn btn-outline btn-warning" do %>
                 <i class="fa fa-edit"></i><% end %>

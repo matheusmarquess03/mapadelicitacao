@@ -21,4 +21,8 @@
                 Drenagem_e_Pavimentação: 'Drenagem e Pavimentação'
                 Obra_de_Revitalização: 'Obra de Revitalização'
                 Outros: 'Outros'
+        certificates:
+            verified:
+                Sim: 'Sim'
+                Não: 'Não'        
 

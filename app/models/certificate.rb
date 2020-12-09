@@ -1,6 +1,12 @@
 class Certificate < ApplicationRecord
 	belongs_to :kind_of_service
 
+    enum verified: {
+        Sim: 1,
+        Não: 2
+    
+    }
+
 	def self.certificate_csv(certificates)
 		headers = ['Número', 'Valor', 'Objeto', 'Engenheiro Responsavel', 'Local da Obra', 'Ano', 'Prazo', 'Data de Inicio', 'Data de Término', 'Livro', 'Item', 'Descrição', 'Unidade', 'Quantidade',  'Tipo de Serviço', 'Path do Arquivo', 'Nome da Empresa']
     

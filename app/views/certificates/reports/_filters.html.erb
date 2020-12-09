@@ -38,6 +38,15 @@
 			%>
 		
 		</div>
+
+		<div class="col-lg-2">
+			<strong>Verificado: </strong>
+			<%= f.select :verified_eq,
+				options_for_select(certificates_verified_i18n, selected: params[:q].present? ? params[:q][:verified_eq] : nil),
+				{ include_blank: 'Todos' }, { class: 'form-control' }
+			%>
+		</div>
+
 		
 		<div class="col-sm-12 col-lg-2">
 			<br>

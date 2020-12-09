@@ -12,7 +12,7 @@ class CertificatesController < ApplicationController
     respond_to do |format|
     format.html
     format.csv {send_data @certificates.to_csv (['number', 'value', 'object', 'responsible_enginner', 'work_site', 'year', 'deadline', 'start_date', 'end_date',
-      'book', 'item', 'description','unit','quantity','kind_of_service','path_file', 'company_name'])}
+      'book', 'item', 'description','unit','quantity','kind_of_service','path_file', 'company_name', 'verified'])}
   end
   end
 
@@ -34,6 +34,7 @@ class CertificatesController < ApplicationController
   # POST /certificates
   # POST /certificates.json
   def create
+    params[:certificate][:verified] = 1
     @certificate = Certificate.new(certificate_params)
 
     respond_to do |format|
@@ -102,7 +103,7 @@ class CertificatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def certificate_params
-      params.require(:certificate).permit(:number, :value, :object, :responsible_enginner, :work_site, :year, :deadline, :start_date, :end_date, :book, :item, :description, :unit, :quantity, :kind_of_service_id, :path_file, :company_name)
+      params.require(:certificate).permit(:number, :value, :object, :responsible_enginner, :work_site, :year, :deadline, :start_date, :end_date, :book, :item, :description, :unit, :quantity, :kind_of_service_id, :path_file, :company_name, :verified)
     end
 
     def redirect_cancel

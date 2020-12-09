@@ -18,7 +18,7 @@
   <div class="panel panel-default">
 
     <div class="panel-heading">
-      <h1>Certificações</h1>
+      <h1>Atestados</h1>
     </div>
  
     <div class="panel-body">
@@ -26,6 +26,7 @@
         <div class="col-lg-6">
             <%= form.label :number  %>
             <%= form.text_field :number, class: 'form-control', required: true  %>
+            <br />
         </div>
        
         
@@ -123,7 +124,13 @@
         <div class="col-lg-6">
           <%= form.label :company_name %>
           <%= form.text_field :company_name, class: 'form-control', required: true %><br>
-        </div>    
+        </div>
+
+       
+        <div class="col-lg-6" style="visibility: hidden">
+          <%= form.label :verified %>
+          <%= form.text_field :verified, class: 'form-control', required: false, value: 2 %><br>
+        </div>   
      </div>
     </div>
   </div>
