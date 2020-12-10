@@ -83,7 +83,7 @@ class CertificatesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv {send_data(Certificate.certificate_csv(@certificates),
+      format.csv {send_data("\uFEFF" + Certificate.certificate_csv(@certificates),
                     filename: "tabela-de-atestados-#{Date.today}.csv")}  
       end
     end

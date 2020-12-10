@@ -32,7 +32,7 @@ class Bidding < ApplicationRecord
 	def self.bidding_csv(biddings)
 		 headers = ['Data da Licitação', 'Órgão', 'Modalidade', 'Objeto', 'Valor Abreviado', 'Valor Edital', 'Vistoria', 'Orçamento', 'Atestados', 'Status', 'Data de Prospecção', 'Tipo de Atestado', 'Tipo de Serviço', 'Empresa']
     
-    CSV.generate(headers: true, encoding: 'ISO-8859-1') do |csv|
+    CSV.generate(headers: true, encoding: 'UTF-8', col_sep: ';') do |csv|
       csv << headers
 	  
 
@@ -63,7 +63,7 @@ class Bidding < ApplicationRecord
 def self.prospection_csv(biddings)
 	headers = ['Data da Licitação', 'Órgão', 'Modalidade', 'Objeto', 'Valor Abreviado', 'Valor Edital', 'Vistoria', 'Orçamento', 'Atestados', 'Status', 'Data de Prospecção', 'Tipo de Atestado', 'Tipo de Serviço', 'Empresa']
     
-    CSV.generate(headers: true, encoding: 'ISO-8859-1') do |csv|
+    CSV.generate(headers: true, encoding: 'UTF-8', col_sep: ';') do |csv|
       
       csv << headers
 

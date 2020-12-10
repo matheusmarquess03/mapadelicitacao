@@ -1,8 +1,8 @@
   <div class="panel panel-default">
   <div class="panel-heading">
-    <!--<%= link_to certificates_path(format: :csv), class: 'btn btn-link' do %>
-      <i class="fa fa-download"></i> Exportar para Planilha
-    <% end %>-->
+	<%= link_to certificates_path(format: :csv), class: 'btn btn-link' do %>
+		<i class="fa fa-download"></i> Exportar para Planilha
+    <% end %>
   </div>
 
   <div class="panel-body">
@@ -36,9 +36,9 @@
                     <td><%= certificate.company_name %></td>
                     <td><%= certificate.verified %></td>
               
-             <!-- <td><%= link_to edit_certificate_path(certificate), class: "btn btn-outline btn-warning" do %>
+              <td><%= link_to edit_certificate_path(certificate), class: "btn btn-outline btn-warning" do %>
                 <i class="fa fa-edit"></i><% end %>
-              </td> -->
+              </td>
               
               <!-- <td><%= link_to certificate_path(certificate), class: 'btn btn-outline btn-danger', method: :delete, data: { confirm: 'Ao confirmar esta operação será perdido definitivamente os dados desta licitação. Tem certeza que deseja fazer isto?' } do %>
                 <i class="fa fa-times"></i><% end %>

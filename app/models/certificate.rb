@@ -10,7 +10,7 @@ class Certificate < ApplicationRecord
 	def self.certificate_csv(certificates)
 		headers = ['Número', 'Valor', 'Objeto', 'Engenheiro Responsavel', 'Local da Obra', 'Ano', 'Prazo', 'Data de Inicio', 'Data de Término', 'Livro', 'Item', 'Descrição', 'Unidade', 'Quantidade',  'Tipo de Serviço', 'Path do Arquivo', 'Nome da Empresa']
     
-    CSV.generate(headers: true, encoding: 'ISO-8859-1') do |csv|
+    CSV.generate(headers: true, encoding: 'UTF-8', col_sep: ';') do |csv|
       csv << headers
 
      certificates.each do |certificate|

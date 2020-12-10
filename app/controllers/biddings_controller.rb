@@ -146,7 +146,7 @@ end
 		format.html
 		
 
-		format.csv {send_data(Bidding.bidding_csv(@biddings),
+		format.csv {send_data("\uFEFF" + Bidding.bidding_csv(@biddings),
                     filename: "mapa-de-licitacao-#{Date.today}.csv")}		
     end
   end
@@ -163,7 +163,7 @@ end
 
 	respond_to do |format|
 		format.html        
-        format.csv {send_data(Bidding.bidding_csv(@biddings),
+        format.csv {send_data("\uFEFF" + Bidding.bidding_csv(@biddings),
                     filename: "tabela-de-prospeccao-#{Date.today}.csv")}		
     end
   end
