@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Cadastro de Fornecedores
+      <% if current_user.profile_id != 1 %>
+         <%= link_to "Cadastrar", new_provider_path, class: "btn btn-outline btn-success pull-right", style: "margin-top: -5px" %>
+         <% end %>
+	</h4>
+  </div>
+  <br/>
+
+  <div class="panel-body">
+    <div class="form-group">
+
+      <div class="filters">
+        <%= render partial: 'providers/reports/filters' %>
+        <hr>
+      </div>
+
+      <div class="table">
+        <%= render partial: 'providers/reports/table_results' %>
+      </div>
+
+    </div>
+  </div>
+</div>

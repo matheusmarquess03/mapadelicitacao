@@ -16,4 +16,47 @@
  *= require_self
  */
 
+.modal {
+	outline: none;
+	position: absolute;
+	margin-top: 0;
+  left: 37% !important;
+	top: 30% !important;
+  width: auto;
+	overflow: visible; /* allow content to popup out (i.e tooltips) */
+}
+
+body.modal-open {
+  overflow: visible;
+  padding-right: 0 !important;
+}
+
+select {
+  background-color: transparent;
+  text-transform: uppercase;
+	font-size: 1.3rem;
+	border-radius: 3px;
+	font-weight: bold;
+  padding-right: 10px;
+}
+
+.border-whitesmoke {
+  border: 1px solid whitesmoke;
+}
+
+.carousel-container {
+  background-color: #f7f7f7;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+
+a.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
  

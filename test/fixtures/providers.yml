@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  unity: MyString
+  value: 1.5
+  company: MyString
+  adress: MyString
+  state: MyString
+  phone: MyString
+  email: MyString
+  website: MyString
+  contact: MyString
+  remark: MyText
+
+two:
+  unity: MyString
+  value: 1.5
+  company: MyString
+  adress: MyString
+  state: MyString
+  phone: MyString
+  email: MyString
+  website: MyString
+  contact: MyString
+  remark: MyText

@@ -1,0 +1,32 @@
+<div class="navbar-default sidebar" role="navigation">
+  <div class="sidebar-nav navbar-collapse">
+    <ul class="nav" id="side-menu">
+
+    <li class>
+        <a href="#"><i class="fa fa-folder-open fa-fw"></i> Menu<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+          <li>
+            <%= link_to biddings_path do %>
+              <i class="fa fa-bar-chart fa-fw"></i> Licitações
+            <% end %>
+          </li>
+          <li>
+            <%= link_to certificates_path do %>
+              <i class="fa fa-user fa-fw"></i> Atestados
+            <% end %>
+          </li>
+       <li>
+            <%= link_to prospection_path do %>
+              <i class="fa fa-truck fa-fw"></i> Prospecção
+            <% end %>
+          </li>
+      <li>
+            <%= link_to providers_path do %>
+              <i class="fa fa-map-marker fa-fw"></i> Fornecedores
+            <% end %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

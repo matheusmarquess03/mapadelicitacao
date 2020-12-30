@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
   resources :profiles
   devise_for :views
   devise_for :users
@@ -9,9 +10,12 @@ Rails.application.routes.draw do
 	get 'prospection', to: 'biddings#prospection'
 	get 'biddings', to: 'biddings#reports'
     get 'biddings/:id/check', to: 'biddings#check', as: 'check_bidding'
+    # get 'providers/reports', to: 'providers#reports', as: 'reports_providers'
 	get 'certificates', to: 'certificates#reports'
+	get 'providers', to: 'providers#reports'
     delete 'biddings/:id/destroy_attachment', to: 'biddings#destroy_attachment', as: 'destroy_attachment_bidding'
 	resources :certificates
+	resources :providers
 	resources :biddings do
 		collection {post :import }
 	end

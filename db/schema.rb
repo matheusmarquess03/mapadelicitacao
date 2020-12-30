@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_130732) do
+ActiveRecord::Schema.define(version: 2020_12_17_133021) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_130732) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.text "reason"
   end
 
   create_table "certificates", force: :cascade do |t|
@@ -97,6 +98,23 @@ ActiveRecord::Schema.define(version: 2020_12_08_130732) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.string "unity"
+    t.float "value"
+    t.string "company"
+    t.string "adress"
+    t.string "phone"
+    t.string "email"
+    t.string "website"
+    t.string "contact"
+    t.text "remark"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+    t.integer "state"
+    t.date "quotation_date"
   end
 
   create_table "services", force: :cascade do |t|

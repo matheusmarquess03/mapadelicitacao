@@ -13,129 +13,78 @@
 					<h4>Data:
 						<%= l @bidding.date %>
 					</h4> 
-				</div>
-			
-				<div class="col-lg-6">
+					<br>	
 					<h4>Orgão:
 						<%= @bidding.organ %>
 					</h4>
-					<br />
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="col-lg-6">
+					<br>
 					<h4>Modalidade:
 						<%= @bidding.modality %>
 					</h4> 
-				</div>
-				
-				<div class="col-lg-6">
+				    <br>
 					<h4>Objeto:
 						<%= @bidding.object %>
 					</h4> 
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="col-lg-6">
+					<br>
 					<h4>Valor: 
 						<%= number_with_precision(@bidding.value, :precision => 2) %>
 					</h4>
-				</div>
-			
-				<div class="col-lg-6">
+				    <br>	
 					<h4> Vistoria: 
 						<%= @bidding.inspection %>
 					</h4>
-					<br />
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="col-lg-6">
+			        <br>
 					<h4>Orçamento:
 						<%= @bidding.budge %>
 					</h4>
-				</div>
-			</div>  
-
-			<div class="col-lg-6">
-				<h4>Status:
+			        <br>	
+				    <h4>Status:
 					<%= t("enums.biddings.status.#{@bidding.status}")%>
-				</h4>
-				<br />
-			</div>
-
-			<div class="form-group">
-				<div class="col-lg-6">
-					<h4>Tipo de Atestado:
+				   </h4>
+			       <br>
+				   <h4>Tipo de Atestado:
 						<%= t("enums.biddings.type_of_certificate.#{@bidding.type_of_certificate}") %>
-					</h4>
-					<br />   
-				</div>  
-			</div> 
-			
-			<div class="form-group">
-				<div class="col-lg-6">
+					</h4>   
+			        <br>
 					<h4>Site:
 						<% if @bidding.website.blank? %>
 								<%= @bidding.website %>
 						<% else %>
 								<a href="<%= @bidding.website %>" target="_blank"><b><u><%= @bidding.website %></b></u></a>
 						<% end %>
-					</h4>
-					<br />
-				</div>
-			</div>  
-
-			<div class="form-group">
-				<div class="col-lg-6">
-					<h4>Atestados:
+					</h4>  
+                    <br>
+			        <h4>Atestados:
 						<%= @bidding.remark %>
 					</h4>
-					<br />
-				</div>
-			</div>  
-			<br />
-
-			<div class="form-group">
-				<div class="col-lg-6">
+			        <br>
 					<h4>Empresa:
 						<%= @bidding.company.name %>
-					</h4>
-					<br />   
-				</div>  
-			</div> 
-			
-			<br />
-			
-			<div class="form-group">
-				<div class="col-lg-6">
+					</h4>   
+			        <br>
 					<h4>Tipo de Serviço:
 						<%= @bidding.kind_of_service.name %>
+					</h4>   
+			        <br>
+					<h4>Observação:
+						<%= @bidding.reason %>
 					</h4>
-					<br />   
-				</div>  
-			</div> 
-		
-			<br />
+					<br >
+					 
+					<br />
 
-			<% if @bidding.uploads.exists? %>
-			<div class="form-group">
-				<div class="col-lg-6">
+					<% if @bidding.uploads.exists? %>
 					<h4>Anexos:</h4>
 						<% @bidding.uploads.each do |upload| %>
 							<%= link_to rails_blob_path(upload, disposition: :attachment) do %>
 								<i class="fa fa-download"></i> <%= upload.filename.to_s %>
-							<% end  %>
 						<% end  %>
-				</div>  
-			</div>		
-			<% end  %>
-                  
-			<br />
-	</div>
+						<% end  %>
+						<% end  %>
+		            <br>
+	            </div>
+	        </div>
+        </div>
 
 	<%= hidden_field_tag 'startPage', @startPage  %>
 	
@@ -147,7 +96,7 @@
 	<%= hidden_field_tag 'q[company_id_eq]', @company_id_eq %>
 
 </div>
-<%= link_to 'Voltar', biddings_path(:startPage => "bidd", q:{:organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :company_id_eq => @company_id_eq, :status_eq => @status_eq}), class: 'btn btn-secondary btn-sm' %>
+<%= link_to 'Voltar', biddings_path(:startPage => "bidd", q:{:organ_cont => @organ_cont, :date_gteq => @date_gteq, :date_lteq => @date_lteq, :kind_of_service_id_eq => @kind_of_service_id_eq, :company_id_eq => @company_id_eq, :status_eq => @status_eq}), class: 'btn btn-info btn-sm' %>
 
 
 

@@ -3,6 +3,7 @@
     models:
       bidding: Licitações
       certificate: Atestados
+      providers: Fornecedores
     attributes:
       bidding:
         date: "Data da Licitação"
@@ -20,6 +21,7 @@
         kind_of_service: "Tipo de Serviço"
         company: "Empresa"
         uploads: "Anexos"
+        reason: "Observação"
         
       certificate:
         number: "Número"
@@ -40,3 +42,18 @@
         path_file: "Path do Arquivo"
         company_name: "Nome da Empresa"
         verified: "Verificado"
+
+      provider:
+        description: "Descrição"
+        unity: "Unidade"
+        value: "Valor"
+        company: "Empresa"
+        adress: "Endereço"
+        state: "Estado"
+        phone: "Telefone"
+        email: "Email"
+        website: "Website"
+        contact: "Contato"
+        remark: "Observação"
+        quotation_date: "Data da Cotação"
+          

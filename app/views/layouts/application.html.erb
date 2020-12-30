@@ -15,26 +15,26 @@
 
 <style>
 .tableFixHead { 
-	overflow-y: auto;
-	height: 500px; 
+  overflow-y: auto;
+  height: 500px; 
 }
 .tableFixHead thead th { 
-	position: sticky; 
-	top: 0; 
+  position: sticky; 
+  top: 0; 
 }
 
 /* Just common table stuff. Really. */
 table { 
-	border-collapse: collapse; 
-	width: 100%; 
+  border-collapse: collapse; 
+  width: 100%; 
 }
 
 th, td { 
-	padding: 8px 16px; 
+  padding: 8px 16px; 
 }
 
 th { 
-	background:#eee; 
+  background:#eee; 
 }
 
 </style>
@@ -45,10 +45,11 @@ th {
 
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header" style="vertical-align: middle;">
-				<%= image_tag('logo.png', style:"float:left", size: "50x50") %>
-				<%= link_to "PROSPECÇÃO", prospection_path , class:"navbar-brand" %> 
-				<%= link_to "MAPA DE LICITAÇÃO", biddings_path, class:"navbar-brand" %>
-				<%= link_to "ATESTADOS", certificates_path, class:"navbar-brand" %>
+        <%= image_tag('logo.png', style:"float:left", size: "50x50") %>
+        <%= link_to "PROSPECÇÃO", prospection_path , class:"navbar-brand" %> 
+        <%= link_to "MAPA DE LICITAÇÃO", biddings_path, class:"navbar-brand" %>
+        <%= link_to "ATESTADOS", certificates_path, class:"navbar-brand" %>
+        <!--%= link_to "FORNECEDORES", providers_path, class:"navbar-brand" %-->
                 <!--%= link_to "SAIR", destroy_user_session_path,  class: "btn btn-warning navbar-right" %-->
                 <!--%= link_to "SAIR", destroy_user_session_path, method: :delete,  class: "btn btn-warning navbar-right", style: "margin-right: -400px; transform: translateY(25%);" %-->
             </div>

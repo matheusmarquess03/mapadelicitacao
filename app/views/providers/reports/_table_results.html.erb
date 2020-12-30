@@ -1,0 +1,62 @@
+<div class="panel panel-default">
+	<div class="panel-heading"> 
+		<%= link_to providers_path(format: :csv), class: 'btn btn-link' do %>
+			<i class="fa fa-download"></i> Exportar para Planilha
+		<% end %> 
+	</div>
+
+	<div class="panel-body">
+		<div class="tableFixHead">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th><%= sort_link(@q, :quotation_date, Provider.human_attribute_name("quotation_date")) %></th>
+						<th><%= sort_link(@q, :description, Provider.human_attribute_name("description")) %></th>
+						<th><%= sort_link(@q, :unity, Provider.human_attribute_name("unity")) %></th>
+						<th><%= sort_link(@q, :value, Provider.human_attribute_name("value")) %></th>
+						<th><%= sort_link(@q, :company, Provider.human_attribute_name("company")) %></th>
+						<th><%= sort_link(@q, :state, Provider.human_attribute_name("state")) %></th>
+						<th><%= sort_link(@q, :phone, Provider.human_attribute_name("company")) %></th>
+						<th colspan="2"></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @provider.each do |provider| %>
+						<tr>
+							<td><%= l provider.quotation_date %></td>
+							<td><%= provider.description %></td>
+							
+							<td><%= provider.unity %></td>
+							
+							<!--<td><%= number_with_precision(provider.value, :precision => 2) %></td>-->
+							<td><%= provider.value %></td>
+							
+							<% if provider.website.blank? %>
+							<td><%= provider.company %></td>
+							<% else %>
+								<td><a href="<%= provider.website %>" target="_blank"><b><u><%= provider.company %></b></u></a></td>
+							<% end %>
+							
+							<td><%= provider.state %></td>
+
+							<td><%= provider.phone %></td>
+							<td><%= link_to edit_provider_path(provider), class: "btn btn-outline btn-warning" do %>
+                      			<i class="fa fa-edit"></i><% end %>
+                    		</td>
+					        <td><%= link_to provider_path(provider), class: "btn btn-outline btn-info" do %>
+					            <i class="fa fa-eye"></i></i><% end %>
+					        </td>
+					        <% if current_user.profile_id != 1 %>          
+          					<td><%= link_to provider_path(provider), class: 'btn btn-outline btn-danger', method: :delete, data: { confirm: 'Ao confirmar esta operação será perdido definitivamente os dados desta licitação. Tem certeza que deseja fazer isto?' } do %>
+                        		<i class="fa fa-times"></i>
+                    			<% end %>
+                    		</td>
+                    		<% end %>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,46 @@
+<%= search_form_for @q, url: providers_path do |f| %>
+
+	<div class="row">
+		<div class="col-lg-4">
+			<strong>Intervalo de datas: </strong>
+			<div class="row">
+				<div class="col-lg-6">
+					<%= date_field_tag 'q[quotation_date_gteq]', params.dig(:q, :quotation_date_gteq), { class: 'form-control' } %>
+				</div>
+				
+			
+				<div class="col-lg-6">
+					<%= date_field_tag 'q[quotation_date_lteq]',  params.dig(:q, :quotation_date_lteq), { class: 'form-control' } %>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-lg-2">
+			<strong>Empresa: </strong>
+			<%= f.text_field :company_cont, { class: 'form-control' } %>
+		</div>
+		
+		
+		<div class="col-lg-2">
+			<strong>Estado: </strong>
+			<%= f.select :state_eq,
+				options_for_select(providers_states_i18n, selected: params[:q].present? ? params[:q][:state_eq] : nil),
+				{ include_blank: 'Todos' }, { class: 'form-control' }
+			%>
+		</div>
+		
+		<div class="col-lg-2">
+			<strong>Descrição: </strong>
+			<%= f.text_field :description_cont, { class: 'form-control' } %>
+		</div>
+		
+		<div class="col-sm-12 col-lg-2">
+			<br>
+			<%= f.submit 'Filtrar', class: 'btn btn-info' %>
+			<%= button_tag 'Limpar', type: 'submit', name: 'cancel', value: true, class: 'btn btn-default' %>
+
+		</div>
+	</div>
+
+
+<% end %>
