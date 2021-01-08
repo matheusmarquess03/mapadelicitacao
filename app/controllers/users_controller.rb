@@ -4,4 +4,4 @@ class UsersController < ApplicationController
   end
   private :resource_params
 end
-end
+

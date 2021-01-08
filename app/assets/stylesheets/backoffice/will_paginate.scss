@@ -148,3 +148,12 @@
     margin-left: 1em;
   }
 }
+
+.img-backgroung img {
+  height: 100vh;
+  top: 0;
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  z-index: -1;
+}

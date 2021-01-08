@@ -24,7 +24,16 @@
 
 				<tbody>
 					<% @biddings.each do |bidding| %>
-						<tr>
+					
+
+						 <% if Bidding.has_certificates[bidding.has_certificate] == 1 %>
+							<tr style="color: red;">
+                         <% elsif Bidding.has_certificates[bidding.has_certificate] == 2 %>
+							<tr style="color: blue;">
+						 <% else %>
+							<tr>		
+						 <% end %>
+						 
 							<td><%= l bidding.date %></td>
 							<td><%= bidding.organ %></td>
 							

@@ -22,6 +22,7 @@
         company: "Empresa"
         uploads: "Anexos"
         reason: "Observação"
+        has_certificate: "Tem Atestados?"
         
       certificate:
         number: "Número"

@@ -13,37 +13,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-<style>
-.tableFixHead { 
-  overflow-y: auto;
-  height: 500px; 
-}
-.tableFixHead thead th { 
-  position: sticky; 
-  top: 0; 
-}
-
-/* Just common table stuff. Really. */
-table { 
-  border-collapse: collapse; 
-  width: 100%; 
-}
-
-th, td { 
-  padding: 8px 16px; 
-}
-
-th { 
-  background:#eee; 
-}
-
-</style>
-</head>
-
-<body>
-
-
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header" style="vertical-align: middle;">
         <%= image_tag('logo.png', style:"float:left", size: "50x50") %>
         <%= link_to "PROSPECÇÃO", prospection_path , class:"navbar-brand" %> 
@@ -69,13 +39,15 @@ th {
                   </li>
                 </ul>
     </nav>
+<style>
 
+
+</style>
+</head>
+
+<body>
         <%= yield %>
-  
-            <!-- /.row -->
-        </div>
-        <!-- /#page-wrapper -->
-
+     
 </body>
 
 </html>

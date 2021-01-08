@@ -59,4 +59,16 @@ a.btn-secondary {
   border-color: #6c757d;
 }
 
+.img-backgroung img {
+  height: 100vh;
+  top: 0;
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  z-index: -1;
+}
+
+
+
+
  

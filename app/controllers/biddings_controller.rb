@@ -54,6 +54,8 @@ end
   def create
 	params[:bidding][:status] = 1
 	params[:bidding][:company_id] = 1
+  
+  
 	
     @bidding = Bidding.new(bidding_params)
 	
@@ -189,9 +191,10 @@ end
 
     # Only allow a list of trusted parameters through.
     def bidding_params
-      pp = params.require(:bidding).permit(:date, :organ, :modality, :object, :value, :value_abbr, :inspection, :budge, :remark, :status, :website, :type_of_certificate, :company_id, :kind_of_service_id, :uploads)
+      pp = params.require(:bidding).permit(:date, :organ, :modality, :object, :value, :value_abbr, :inspection, :budge, :remark, :status, :website, :type_of_certificate, :company_id, :kind_of_service_id, :uploads, :has_certificate)
 	  pp[:status] = params[:bidding][:status].to_i
 	  pp[:type_of_certificate] = params[:bidding][:type_of_certificate].to_i
+    pp[:has_certificate] = params[:bidding][:has_certificate].to_i
 	  pp[:company_id] = params[:bidding][:company_id].to_i
       pp[:kind_of_service_id] = params[:bidding][:kind_of_service_id].to_i
 	  

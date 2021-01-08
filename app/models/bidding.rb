@@ -23,6 +23,14 @@ class Bidding < ApplicationRecord
 		both: 3
 	}
 
+    enum has_certificate: {
+        underfined: 0,
+        not_has_certifcate: 1,
+        has_certificate: 2
+
+    }
+
+
 
 	
 	ransacker :created_at do

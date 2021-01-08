@@ -1,6 +1,10 @@
 'pt-BR':
     enums:
         biddings:
+            has_certificate:
+                underfined: 'Não definido'
+                not_has_certifcate: 'Não' 
+                has_certificate: 'Sim'
             status:
                 registered: 'Cadastrada'
                 ongoing: 'Em Andamento'

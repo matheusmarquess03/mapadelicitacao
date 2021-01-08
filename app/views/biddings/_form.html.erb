@@ -133,10 +133,20 @@
 									%>
 									<br />
 								</div>
+
+								<div class="col-lg-6">
+									<%= form.label :has_certificate %>
+									<%= form.select :has_certificate,
+										options_for_select(biddings_has_certificates_i18n, selected: Bidding.has_certificates[form.object.has_certificate]),
+										{ include_blank: 'Selecione uma opção' },
+										{ class: 'form-control', required: false }
+									%>
+								</div>
+
                              <div class="form-group">
 								<div class="col-lg-6">
 									<%= form.label :reason %>
-									<%= form.text_area :reason, class: 'form-control', required: true  %>
+									<%= form.text_area :reason, class: 'form-control', required: false  %>
 									<br>
 								</div>
 							</div>
@@ -186,8 +196,10 @@
 							<%= form.file_field :uploads, multiple: false,  direct_upload: true %>
 							<br>
 						</div>
-				</div>
+				    </div>
+			    </div>
 			</div>
+
   
       
 	<br />
