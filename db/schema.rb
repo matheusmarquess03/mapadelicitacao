@@ -50,11 +50,6 @@ ActiveRecord::Schema.define(version: 2021_01_07_120546) do
     t.integer "company_id"
     t.integer "kind_of_service_id"
     t.string "value_abbr"
-    t.string "avatar_file_name"
-    t.string "avatar_content_type"
-    t.integer "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.text "reason"
     t.integer "has_certificate"
   end
 
@@ -83,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_120546) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
-    t.integer "cnpj"
+    t.string "cnpj"
     t.string "image_file_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -116,12 +111,6 @@ ActiveRecord::Schema.define(version: 2021_01_07_120546) do
     t.text "description"
     t.integer "state"
     t.date "quotation_date"
-  end
-
-  create_table "services", force: :cascade do |t|
-    t.string "kinf_of_service"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

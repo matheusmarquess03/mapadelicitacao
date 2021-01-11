@@ -2,7 +2,7 @@
     enums:
         biddings:
             has_certificate:
-                underfined: 'Não definido'
+                undefined: 'Selecione uma opção'
                 not_has_certifcate: 'Não' 
                 has_certificate: 'Sim'
             status:

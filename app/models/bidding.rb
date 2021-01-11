@@ -24,11 +24,10 @@ class Bidding < ApplicationRecord
 	}
 
     enum has_certificate: {
-        underfined: 0,
+		undefined: 0,
         not_has_certifcate: 1,
         has_certificate: 2
-
-    }
+	}
 
 
 
