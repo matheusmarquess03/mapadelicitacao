@@ -23,12 +23,15 @@ class CertificatesController < ApplicationController
 
   # GET /certificates/new
   def new
+	load_filter_params
+	
 	@list_kind_of_services = KindOfService.order(name: :asc)
     @certificate = Certificate.new
   end
 
   # GET /certificates/1/edit
   def edit
+	load_filter_params
   end
 
   # POST /certificates
@@ -73,19 +76,21 @@ class CertificatesController < ApplicationController
   end
 
     def reports
-	@list_kind_of_services = KindOfService.all.order(name: :asc)
-	
-    @q = Certificate.ransack(params[:q])
+		load_filter_params
+		
+		@list_kind_of_services = KindOfService.all.order(name: :asc)
+		
+		@q = Certificate.ransack(params[:q])
 
-    @certificates = @q.result
-            .order(description: :asc)
-			.paginate(page: params[:page], per_page: 10)
+		@certificates = @q.result
+				.order(description: :asc)
+				.paginate(page: params[:page], per_page: 10)
 
-    respond_to do |format|
-      format.html
-      format.csv {send_data("\uFEFF" + Certificate.certificate_csv(@certificates),
-                    filename: "tabela-de-atestados-#{Date.today}.csv")}  
-      end
+		respond_to do |format|
+		  format.html
+		  format.csv {send_data("\uFEFF" + Certificate.certificate_csv(@certificates),
+						filename: "tabela-de-atestados-#{Date.today}.csv")}  
+		  end
     end
 
   private
@@ -111,5 +116,16 @@ class CertificatesController < ApplicationController
 
     def redirect_cancel
     redirect_to certificates_path if params[:cancel]
-  end
+	end
+	
+	def load_filter_params
+		if (params[:q].present?)
+			@number_eq = params[:q][:number_eq]
+			@responsible_enginner_cont = params[:q][:responsible_enginner_cont]
+			@company_name_cont = params[:q][:company_name_cont]
+			@description_cont = params[:q][:description_cont]
+			@kind_of_service_id_eq = params[:q][:kind_of_service_id_eq]
+			@verified_eq = params[:q][:verified_eq]
+		end
+	end
 end

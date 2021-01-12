@@ -36,10 +36,10 @@
                     <td><%= certificate.company_name %></td>
                     <td><%= certificate.verified %></td>
               
-              <td><%= link_to edit_certificate_path(certificate), class: "btn btn-outline btn-warning" do %>
+              <td><%= link_to edit_certificate_path(certificate, q:{:number_eq => @number_eq, :responsible_enginner_cont => @responsible_enginner_cont, :company_name_cont => @company_name_cont, :description_cont => @description_cont, :kind_of_service_id_eq => @kind_of_service_id_eq, :verified_eq => @verified_eq}), class: "btn btn-outline btn-warning" do %>
                 <i class="fa fa-edit"></i><% end %>
               </td>
-              
+			  
               <!-- <td><%= link_to certificate_path(certificate), class: 'btn btn-outline btn-danger', method: :delete, data: { confirm: 'Ao confirmar esta operação será perdido definitivamente os dados desta licitação. Tem certeza que deseja fazer isto?' } do %>
                 <i class="fa fa-times"></i><% end %>
               </td> -->
