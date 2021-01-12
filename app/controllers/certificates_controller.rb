@@ -34,7 +34,7 @@ class CertificatesController < ApplicationController
   # POST /certificates
   # POST /certificates.json
   def create
-    params[:certificate][:verified] = 1
+    
     @certificate = Certificate.new(certificate_params)
 
     respond_to do |format|
@@ -103,7 +103,10 @@ class CertificatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def certificate_params
-      params.require(:certificate).permit(:number, :value, :object, :responsible_enginner, :work_site, :year, :deadline, :start_date, :end_date, :book, :item, :description, :unit, :quantity, :kind_of_service_id, :path_file, :company_name, :verified)
+      pp = params.require(:certificate).permit(:number, :value, :object, :responsible_enginner, :work_site, :year, :deadline, :start_date, :end_date, :book, :item, :description, :unit, :quantity, :kind_of_service_id, :path_file, :company_name, :verified)
+      pp[:verified] = params[:certificate][:verified].to_i
+
+       return pp
     end
 
     def redirect_cancel

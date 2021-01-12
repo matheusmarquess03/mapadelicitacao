@@ -10,8 +10,14 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  adapter: postgresql  
+  encoding: unicode
+  pool: 5
+  host: ec2-54-157-88-70.compute-1.amazonaws.com # HOST 
+  port: 5432                                    # Port  
+  database: d522p4b5u39gcr                      # Database Name  
+  username: wdpebrodjklyqw                      # User Name  
+  password: acd920ea41f3d437bb383da8dfd2bbae9a15a2451f7691d74889808e540965d2 #Password
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
