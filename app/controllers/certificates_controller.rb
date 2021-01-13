@@ -37,12 +37,14 @@ class CertificatesController < ApplicationController
   # POST /certificates
   # POST /certificates.json
   def create
-    
+    load_filter_params
+	
     @certificate = Certificate.new(certificate_params)
 
     respond_to do |format|
       if @certificate.save
-        format.html { redirect_to certificates_path, notice: 'Certificação cadastrada com sucesso!' }
+		format.html { redirect_to certificates_path(q: {:number_eq => @number_eq, :responsible_enginner_cont => @responsible_enginner_cont, :company_name_cont => @company_name_cont, :description_cont => @description_cont, :kind_of_service_id_eq => @kind_of_service_id_eq, :verified_eq => @verified_eq}), notice: 'Certificação cadastrada com sucesso!' }
+		
         format.json { render :show, status: :created, location: @certificate }
       else
         format.html { render :new }
@@ -54,9 +56,11 @@ class CertificatesController < ApplicationController
   # PATCH/PUT /certificates/1
   # PATCH/PUT /certificates/1.json
   def update
+	load_filter_params
+  
     respond_to do |format|
       if @certificate.update(certificate_params)
-        format.html { redirect_to certificates_path, notice: 'Certificação atualizada com sucesso!' }
+		format.html { redirect_to certificates_path(q: {:number_eq => @number_eq, :responsible_enginner_cont => @responsible_enginner_cont, :company_name_cont => @company_name_cont, :description_cont => @description_cont, :kind_of_service_id_eq => @kind_of_service_id_eq, :verified_eq => @verified_eq}), notice: 'Certificação atualizada com sucesso!' }
         format.json { render :show, status: :ok, location: @certificate }
       else
         format.html { render :edit }
