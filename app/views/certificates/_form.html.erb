@@ -151,11 +151,13 @@
 	<%= hidden_field_tag 'q[description_cont]', @description_cont %>
 	<%= hidden_field_tag 'q[kind_of_service_id_eq]', @kind_of_service_id_eq %>
 	<%= hidden_field_tag 'q[verified_eq]', @verified_eq %>
+	<%= hidden_field_tag 'page', @page %>
+
 
 </div>
 <% end %> 
 </form>
 
-<a class="btn btn-secondary btn-sm" <%= link_to "Voltar", certificates_path(q:{:number_eq => @number_eq, :responsible_enginner_cont => @responsible_enginner_cont, :company_name_cont => @company_name_cont, :description_cont => @description_cont, :kind_of_service_id_eq => @kind_of_service_id_eq, :verified_eq => @verified_eq}) %>
+<a class="btn btn-secondary btn-sm" <%= link_to "Voltar", certificates_path(:page => @page, q:{:number_eq => @number_eq, :responsible_enginner_cont => @responsible_enginner_cont, :company_name_cont => @company_name_cont, :description_cont => @description_cont, :kind_of_service_id_eq => @kind_of_service_id_eq, :verified_eq => @verified_eq}) %>
 <button name="button" type="submit" class="btn btn-success btn-sm">Salvar</button>
 

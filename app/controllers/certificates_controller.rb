@@ -43,7 +43,7 @@ class CertificatesController < ApplicationController
 
     respond_to do |format|
       if @certificate.save
-		format.html { redirect_to certificates_path(q: {:number_eq => @number_eq, :responsible_enginner_cont => @responsible_enginner_cont, :company_name_cont => @company_name_cont, :description_cont => @description_cont, :kind_of_service_id_eq => @kind_of_service_id_eq, :verified_eq => @verified_eq}), notice: 'Certificação cadastrada com sucesso!' }
+		format.html { redirect_to certificates_path(:page => @page, q: {:number_eq => @number_eq, :responsible_enginner_cont => @responsible_enginner_cont, :company_name_cont => @company_name_cont, :description_cont => @description_cont, :kind_of_service_id_eq => @kind_of_service_id_eq, :verified_eq => @verified_eq}), notice: 'Certificação cadastrada com sucesso!' }
 		
         format.json { render :show, status: :created, location: @certificate }
       else
@@ -60,7 +60,7 @@ class CertificatesController < ApplicationController
   
     respond_to do |format|
       if @certificate.update(certificate_params)
-		format.html { redirect_to certificates_path(q: {:number_eq => @number_eq, :responsible_enginner_cont => @responsible_enginner_cont, :company_name_cont => @company_name_cont, :description_cont => @description_cont, :kind_of_service_id_eq => @kind_of_service_id_eq, :verified_eq => @verified_eq}), notice: 'Certificação atualizada com sucesso!' }
+		format.html { redirect_to certificates_path(:page => @page, q: {:number_eq => @number_eq, :responsible_enginner_cont => @responsible_enginner_cont, :company_name_cont => @company_name_cont, :description_cont => @description_cont, :kind_of_service_id_eq => @kind_of_service_id_eq, :verified_eq => @verified_eq}), notice: 'Certificação atualizada com sucesso!' }
         format.json { render :show, status: :ok, location: @certificate }
       else
         format.html { render :edit }
@@ -130,6 +130,10 @@ class CertificatesController < ApplicationController
 			@description_cont = params[:q][:description_cont]
 			@kind_of_service_id_eq = params[:q][:kind_of_service_id_eq]
 			@verified_eq = params[:q][:verified_eq]
+		end
+		
+		if(params[:page].present?)
+			@page = params[:page]
 		end
 	end
 end
